@@ -1,0 +1,171 @@
+#ifndef sosx_OVT_INCLUDED
+#define sosx_OVT_INCLUDED
+
+/* 
+	Define your data types here. 
+*/
+
+ENUMDEF(SOSX_EXTERNALINFOSTATE)
+#define SOSX_EXTERNALINFOSTATE_NOTCHECKED	ENUMVAL(SOSX_EXTERNALINFOSTATE, 0x0000)
+#define SOSX_EXTERNALINFOSTATE_NOCHANGE		ENUMVAL(SOSX_EXTERNALINFOSTATE, 0x0010)
+#define SOSX_EXTERNALINFOSTATE_NOTFOUND		ENUMVAL(SOSX_EXTERNALINFOSTATE, 0x0020)
+#define SOSX_EXTERNALINFOSTATE_CHANGED		ENUMVAL(SOSX_EXTERNALINFOSTATE, 0x0030)
+
+ENUMDEF(SOSX_ISVALID)
+#define SOSX_ISVALID_NOTCHECKED          ENUMVAL(SOSX_ISVALID, 0x0000)			// black
+#define SOSX_ISVALID_ISVALID             ENUMVAL(SOSX_ISVALID, 0x0001)			// green
+#define SOSX_ISVALID_WARNING	         ENUMVAL(SOSX_ISVALID, 0x0010)			// yellow
+#define SOSX_ISVALID_ERROR	             ENUMVAL(SOSX_ISVALID, 0x0020)			// red
+
+ENUMDEF(SOSX_UPDATE_TYPE)
+#define SOSX_UPDATE_COMPLETE             ENUMVAL(SOSX_UPDATE_TYPE, 0x0000)
+#define SOSX_UPDATE_SIMRESONLY           ENUMVAL(SOSX_UPDATE_TYPE, 0x0001)
+
+/* PropertyInformation types */
+#define SIMULATIONRESULT				"SimulationResult"
+
+
+/**
+ * structure that describes a SoSContainer without an internal structure completely
+ */
+typedef struct {
+	OV_INSTPTR_ov_domain 			pTarget;
+	OV_INSTPTR_caex_CAEXObject		pSource;
+	OV_STRING						Name;
+	OV_STRING_VEC					externalReference;
+} SOSX_SoSContainerDescription;
+
+/**
+ * structure that describes a system without an internal structure completely
+ */
+typedef struct {
+	OV_INSTPTR_ov_domain		 	pTarget;
+	OV_INSTPTR_caex_CAEXObject		pSource;
+	OV_STRING						Name;
+	OV_STRING_VEC					externalInfo;
+	OV_STRING						CaexLib;
+	OV_UINT 						xPos;
+	OV_UINT							yPos;
+	OV_TIME							validFrom;
+	OV_TIME							validUntil;
+	OV_INT							Height;
+	OV_INT							Width;
+} SOSX_SystemDescription;
+
+/**
+ * structure that describes a process without internal elements completely
+ */
+typedef struct {
+	OV_INSTPTR_sosx_DetailedElement	pTarget;
+	OV_INSTPTR_caex_CAEXObject		pSource;
+	OV_STRING						Name;
+	OV_STRING_VEC					externalInfo;
+	OV_STRING						CaexLib;
+	OV_UINT 						xPos;
+	OV_UINT							yPos;
+	OV_TIME							validFrom;
+	OV_TIME							validUntil;
+	OV_INT							Height;
+	OV_INT							Width;
+} SOSX_ProcessDescription;
+
+/**
+ * structure that describes a port without internal elements completely
+ */
+typedef struct {
+	OV_INSTPTR_sosx_DetailedElement	pTarget;
+	OV_INSTPTR_caex_CAEXObject		pSource;
+	OV_STRING						Name;
+	OV_STRING_VEC					isLinkedTo;
+	OV_STRING						wasConnectedTo;
+	OV_STRING						StreamType;
+	OV_STRING						CaexLib;
+	OV_UINT 						xPos;
+	OV_UINT							yPos;
+	OV_TIME							validFrom;
+	OV_TIME							validUntil;
+} SOSX_PortDescription;
+
+/**
+ * structure that describes a SourceSink without internal elements completely
+ */
+typedef struct {
+	OV_INSTPTR_ov_domain			pTarget;
+	OV_INSTPTR_caex_CAEXObject		pSource;
+	OV_STRING_VEC					isLinkedTo;
+	OV_STRING						Name;
+	OV_STRING						wasConnectedTo;
+	OV_STRING						StreamType;
+	OV_STRING						CaexLib;
+	OV_UINT 						xPos;
+	OV_UINT							yPos;
+	OV_TIME							validFrom;
+	OV_TIME							validUntil;
+} SOSX_SourceSinkDescription;
+
+/**
+ * structure that describes a DistributionNode without internal elements completely
+ */
+typedef struct {
+	OV_INSTPTR_sosx_DetailedElement	pTarget;
+	OV_INSTPTR_caex_CAEXObject		pSource;
+	OV_STRING_VEC					isLinkedTo;
+	OV_STRING						StreamType;
+	OV_STRING						Name;
+	OV_STRING						wasConnectedTo;
+	OV_STRING						CaexLib;
+	OV_UINT 						xPos;
+	OV_UINT							yPos;
+	OV_TIME							validFrom;
+	OV_TIME							validUntil;
+} SOSX_DistributionNodeDescription;
+
+/**
+ * structure that describes a Property without internal elements completely
+ */
+typedef struct {
+	OV_INSTPTR_ov_domain			pTarget;
+	OV_INSTPTR_caex_CAEXObject		pSource;
+	OV_STRING						Name;
+	OV_STRING						CaexLib;
+	OV_UINT 						xPos;
+	OV_UINT							yPos;
+} SOSX_PropertyDescription;
+
+/**
+ * structure that describes a PropertyInformation completely
+ */
+typedef struct {
+	OV_INSTPTR_ov_domain			pTarget;
+	OV_INSTPTR_caex_CAEXObject		pSource;
+	OV_ANY							value;
+	OV_ANY							valueVec;
+	OV_TIME_VEC						timeStamps;
+	OV_STRING						source;
+	OV_STRING						type;
+	OV_INT							dataType;
+	OV_STRING						unit;
+	OV_STRING						Identifier;
+	OV_UINT							readStyle;
+	OV_STRING						CaexLib;
+	OV_UINT 						xPos;
+	OV_UINT							yPos;
+	OV_TIME							validFrom;
+	OV_TIME							validUntil;
+} SOSX_PropertyInformationDescription;
+
+/**
+ * structure that describes a Stream completely
+ */
+typedef struct {
+	OV_INSTPTR_ov_domain			pTarget;
+	OV_INSTPTR_caex_CAEXObject		pSource;
+	OV_STRING_VEC					isLinkedTo;
+	OV_STRING						Identifier;
+	OV_STRING						CaexLib;
+	OV_STRING						visualLayout;
+	OV_TIME							validFrom;
+	OV_TIME							validUntil;
+} SOSX_StreamDescription;
+
+#endif

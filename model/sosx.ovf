@@ -1,0 +1,228 @@
+#include "caex.h"
+#include "sosx.ovt"
+
+#ifndef sosx_OVF_INCLUDED
+#define sosx_OVF_INCLUDED
+
+typedef OV_DLLFNCEXPORT	OV_RESULT	sosx_FNC_GETLIBRARYLIST(
+		OV_INSTPTR_caex_CAEXBasicObject		pInternalElement,
+		OV_INSTPTR_caex_CAEXObject			**pLibList,
+		OV_UINT								*LenLibList
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_IMPORTCAEXFILE(
+		OV_STRING							DirPath,
+		OV_STRING_VEC 						FileList
+);
+
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_EXPORTCAEXFILE(
+		OV_INSTPTR_ov_domain				pTargetElement,
+		OV_STRING							DirPath,
+		OV_STRING							Name,
+		OV_BOOL								exportStateOnly	
+);
+
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_EXPORTCAEXCYCLIC(
+		OV_STRING							ElementToBeRead,
+		OV_STRING							FilePath,
+		OV_TIME_SPAN						cyctime
+);
+
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_EXECUTESIMULATIONCYCLIC(
+		OV_STRING							pathToSimDir,
+		OV_STRING							pathToSimResDir,
+		OV_STRING							pathToCeaxArchiveDir,
+		OV_STRING							SosxStruct,
+		OV_TIME_SPAN						cycTimeSec
+);
+
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_CREATEELEMENT(
+		OV_INSTPTR_ov_domain				pTargetSys,
+		OV_INSTPTR_caex_CAEXBasicObject		pElement
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_READELEMENT(
+		OV_INSTPTR_ov_domain				pElementToBeRead,
+		OV_INSTPTR_ov_domain				pTarget,
+		OV_BOOL								writeHeader,
+		OV_STRING							HeaderName,
+		OV_BOOL								readStateOnly
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_UPDATEELEMENT(
+		OV_INSTPTR_ov_domain				pElementToBeUpdated,
+		OV_INSTPTR_caex_CAEXBasicObject		pUpdate,
+		SOSX_UPDATE_TYPE					updateType
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_DELETEELEMENT(
+		OV_INSTPTR_ov_domain				pElementToBeDeleted
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_VALIDATEELEMENT(
+		OV_INSTPTR_ov_domain				pTargetElement,
+		OV_STRING_VEC						*pValidationLog
+);
+//sosxdomain
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_RESTISVALIDIFVALUECHANGED(
+		OV_INSTPTR_sosx_sosxdomain			pobj
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_SETCAEXLIBRARY(
+		OV_INSTPTR_sosx_sosxdomain			pobj,
+		OV_INSTPTR_caex_CAEXBasicObject		pIE,
+		const OV_STRING  					value
+);
+//SoSContainer
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_CREATESIMPLESOSCONTAINER(
+		SOSX_SoSContainerDescription		*SoSContainerSpec,
+		OV_INSTPTR_sosx_SoSContainer 		*ppCreatedSoSContainer
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_SIMPLESOSCONTAINERUPDATE(
+		SOSX_SoSContainerDescription	*SoSContainerSpec
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_READSOSCONTAINER(
+		OV_INSTPTR_sosx_SoSContainer		pSoSContainerToBeRead,
+		OV_INSTPTR_ov_domain				pTragetContainer,
+		OV_BOOL								readStateOnly
+);
+
+//System
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_CREATESIMPLESYSTEM(
+		SOSX_SystemDescription				*SystemSpec,
+		OV_INSTPTR_sosx_System 				*ppCreatedSystem
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_SIMPLESYSTEMUPDATE(
+		SOSX_SystemDescription	*SystemSpec
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_READSYSTEM(
+		OV_INSTPTR_sosx_System				pSystemToBeRead,
+		OV_INSTPTR_ov_domain				pTargetContainer,
+		OV_BOOL								readStateOnly
+);
+
+//Process
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_CREATESIMPLEPROCESS(
+		SOSX_ProcessDescription				*ProcessSpec,
+		OV_INSTPTR_sosx_Process 			*ppCreatedProcess
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_SIMPLEPROCESSUPDATE(
+		SOSX_ProcessDescription	*ProcessSpec
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_READPROCESS(
+		OV_INSTPTR_sosx_Process				pProcessToBeRead,
+		OV_INSTPTR_ov_domain				pTargetContainer,
+		OV_BOOL								readStateOnly
+);
+
+
+//Port
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_CREATESIMPLEPORT(
+		SOSX_PortDescription				*PortSpec,
+		OV_INSTPTR_sosx_Port				*ppCreatedPort
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_SIMPLEPORTUPDATE(
+		SOSX_PortDescription	*PortSpec
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_READPORT(
+		OV_INSTPTR_sosx_Port				pPortToBeRead,
+		OV_INSTPTR_ov_domain				pTragetContainer,
+		OV_BOOL								readStateOnly
+);
+
+//SourceSink
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_CREATESIMPLESOURCESINK(
+		SOSX_SourceSinkDescription			*SourceSinkSpec,
+		OV_INSTPTR_sosx_SourceSink			*ppCreatedSourceSink
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_SIMPLESOURCESINKUPDATE(
+		SOSX_SourceSinkDescription	*SourceSinkSpec
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_READSOURCESINK(
+		OV_INSTPTR_sosx_SourceSink			pSourceSinkToBeRead,
+		OV_INSTPTR_ov_domain				pTragetContainer,
+		OV_BOOL								readStateOnly
+);
+
+//DistributionNode
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_CREATESIMPLEDISTRIBUTIONNODE(
+		SOSX_DistributionNodeDescription	*DistributionNodeSpec,
+		OV_INSTPTR_sosx_DistributionNode	*ppCreatedDistributionNode
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_SIMPLEDISTRIBUTIONNODEUPDATE(
+		SOSX_DistributionNodeDescription	*DistributionNodeSpec
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_READDISTRIBUTIONNODE(
+		OV_INSTPTR_sosx_DistributionNode	pDistributionNodeToBeRead,
+		OV_INSTPTR_ov_domain				pTragetContainer,
+		OV_BOOL								readStateOnly
+);
+
+//Alternative
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_CREATEALTERNATIVE(
+		OV_INSTPTR_sosx_System				pTargetElement,
+		OV_INSTPTR_caex_InternalElement		pInternalElement
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_READALTERNATIVE(
+		OV_INSTPTR_sosx_Alternative			pAlternativeToBeRead,
+		OV_INSTPTR_ov_domain				pTragetContainer,
+		OV_BOOL								readStateOnly
+);
+
+//Property
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_CREATESIMPLEPROPERTY(
+		SOSX_PropertyDescription			*PropertySpec,
+		OV_INSTPTR_sosx_Property			*ppCreatedProperty
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_SIMPLEPROPERTYUPDATE(
+		SOSX_PropertyDescription	*PropertySpec
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_READPROPERTY(
+		OV_INSTPTR_sosx_Property			pPropertyToBeRead,
+		OV_INSTPTR_ov_domain				pTragetContainer,
+		OV_BOOL								readStateOnly
+);
+
+//PropertyInformation
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_CREATESIMPLEPROPERTYINFORMATION(
+		SOSX_PropertyInformationDescription	*PropertyInformationSpec,
+		OV_INSTPTR_sosx_PropertyInformation	*ppCreatedPropertyInformation
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_SIMPLEPROPERTYINFORMATIONUPDATE(
+		SOSX_PropertyInformationDescription	*PropertyInformationUpdateSpec
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_READPROPERTYINFORMATION(
+		OV_INSTPTR_sosx_PropertyInformation			pPropertyInformationToBeRead,
+		OV_INSTPTR_ov_domain						pTragetContainer,
+		OV_BOOL										readStateOnly
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_ADDVALUETOVEC(
+		OV_INSTPTR_sosx_PropertyInformation			pobj,
+		const OV_ANY								*pValue
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_ADDTIMESTAMP(
+		OV_INSTPTR_sosx_PropertyInformation			pobj,
+		const OV_TIME								*Time
+);
+
+//Stream
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_CREATESIMPLESTREAM(
+		SOSX_StreamDescription				*StreamSpec,
+		OV_INSTPTR_sosx_Stream				*ppCreatedStream
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_SIMPLESTREAMUPDATE(
+		SOSX_StreamDescription	*StreamSpec
+);
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_READSTREAM(
+		OV_INSTPTR_sosx_Stream				pStreamToBeRead,
+		OV_INSTPTR_ov_domain				pTragetContainer,
+		OV_BOOL								readStateOnly
+);
+
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_RESETALL(
+		OV_INSTPTR_ov_domain				pRoot
+);
+
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_STOPALL(
+		OV_INSTPTR_ov_domain				pRoot
+);
+
+typedef OV_DLLFNCEXPORT OV_RESULT sosx_FNC_STARTALL(
+		OV_INSTPTR_ov_domain				pRoot,
+		OV_INT								*count
+);
+#endif

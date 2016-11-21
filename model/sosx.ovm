@@ -1,0 +1,643 @@
+/*
+*	Copyright (C) 2011
+*	Chair of Process Control Engineering,
+*	Aachen University of Technology.
+*	All rights reserved.
+*
+*	Redistribution and use in source and binary forms, with or without
+*	modification, are permitted provided that the following conditions
+*	are met:
+*	1. Redistributions of source code must retain the above copyright
+*	   notice, this list of conditions and the following disclaimer.
+*	2. Redistributions in binary form must print or display the above
+*	   copyright notice either during startup or must have a means for
+*	   the user to view the copyright notice.
+*	3. Redistributions in binary form must reproduce the above copyright
+*	   notice, this list of conditions and the following disclaimer in
+*		the documentation and/or other materials provided with the
+*		distribution.
+*	4. Neither the name of the Chair of Process Control Engineering nor
+*		the name of the Aachen University of Technology may be used to
+*		endorse or promote products derived from this software without
+*		specific prior written permission.
+* 
+*	THIS SOFTWARE IS PROVIDED BY THE CHAIR OF PROCESS CONTROL ENGINEERING
+*	``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+*	LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+*	A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE CHAIR OF
+*	PROCESS CONTROL ENGINEERING BE LIABLE FOR ANY DIRECT, INDIRECT,
+*	INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+*	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+*	OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+*	AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+*	LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+*	WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+*	POSSIBILITY OF SUCH DAMAGE.
+*
+***********************************************************************
+*
+*	File:
+*	------
+*	sosx.ovm
+*
+*	Editors:
+*	--------
+*	CvT		Christian v. Trotha <c.trotha@plt.rwth-aachen.de>
+*
+*
+*	History:
+*	--------
+*	10-October-2014			CvT		V1.0
+*
+***********************************************************************/
+#include "ov.ovm"
+#include "ksapi.ovm"
+#include "caex.ovm"
+#include "fbcomlib.ovm"
+#include "ksxdrgethist.ovm"
+
+LIBRARY sosx
+	VERSION   = "V0.1 (22-October-2014)";
+	AUTHOR    = "Christian v. Trotha";
+	COPYRIGHT = "";
+	COMMENT   = "SoSX basic classes";
+	/* API-Class: Offers all functions to use the sosx Information exchange platform. 
+	 * There is a create, update, read, delete and validate function for each instantiable class of the model
+	 */
+	 CLASS informationModelManagement		:	CLASS ov/domain
+	 	IS_INSTANTIABLE;
+		COMMENT = "information model management for the sosx information model";
+		VARIABLES
+		END_VARIABLES;
+		OPERATIONS		
+			// SOSCONTAINER
+			createSimpleSoSContainer		:	C_FUNCTION <sosx_FNC_CREATESIMPLESOSCONTAINER>;
+			SimpleSoSContainerUpdate		:	C_FUNCTION <sosx_FNC_SIMPLESOSCONTAINERUPDATE>;
+			readSoSContainer				:	C_FUNCTION <sosx_FNC_READSOSCONTAINER>;
+			// SYSTEM
+			createSimpleSystem				:	C_FUNCTION <sosx_FNC_CREATESIMPLESYSTEM>;
+			SimpleSystemUpdate				:	C_FUNCTION <sosx_FNC_SIMPLESYSTEMUPDATE>;
+			readSystem						:	C_FUNCTION <sosx_FNC_READSYSTEM>;
+			// PROCESS
+			createSimpleProcess				:	C_FUNCTION <sosx_FNC_CREATESIMPLEPROCESS>;
+			SimpleProcessUpdate				:	C_FUNCTION <sosx_FNC_SIMPLEPROCESSUPDATE>;
+			readProcess						:	C_FUNCTION <sosx_FNC_READPROCESS>;
+			// PORT
+			createSimplePort				:	C_FUNCTION <sosx_FNC_CREATESIMPLEPORT>;
+			SimplePortUpdate				:	C_FUNCTION <sosx_FNC_SIMPLEPORTUPDATE>;
+			readPort						:	C_FUNCTION <sosx_FNC_READPORT>;
+			// SOURCESINK
+			createSimpleSourceSink			:	C_FUNCTION <sosx_FNC_CREATESIMPLESOURCESINK>;
+			SimpleSourceSinkUpdate			:	C_FUNCTION <sosx_FNC_SIMPLESOURCESINKUPDATE>;
+			readSourceSink					:	C_FUNCTION <sosx_FNC_READSOURCESINK>;
+			// SOURCESINK
+			createSimpleDistributionNode	:	C_FUNCTION <sosx_FNC_CREATESIMPLEDISTRIBUTIONNODE>;
+			SimpleDistributionNodeUpdate	:	C_FUNCTION <sosx_FNC_SIMPLEDISTRIBUTIONNODEUPDATE>;
+			readDistributionNode			:	C_FUNCTION <sosx_FNC_READDISTRIBUTIONNODE>;
+			// PROPERTY	
+			createSimpleProperty			:	C_FUNCTION <sosx_FNC_CREATESIMPLEPROPERTY>;
+			SimplePropertyUpdate			:	C_FUNCTION <sosx_FNC_SIMPLEPROPERTYUPDATE>;
+			readProperty					:	C_FUNCTION <sosx_FNC_READPROPERTY>;
+			// PROPERTYINFORMATION
+			createSimplePropertyInformation	:	C_FUNCTION <sosx_FNC_CREATESIMPLEPROPERTYINFORMATION>;
+			SimplePropertyInformationUpdate	:	C_FUNCTION <sosx_FNC_SIMPLEPROPERTYINFORMATIONUPDATE>;
+			readPropertyInformation			:	C_FUNCTION <sosx_FNC_READPROPERTYINFORMATION>;
+			// STREAM
+			createSimpleStream				:	C_FUNCTION <sosx_FNC_CREATESIMPLESTREAM>;
+			SimpleStreamUpdate				:	C_FUNCTION <sosx_FNC_SIMPLESTREAMUPDATE>;
+			readStream						:	C_FUNCTION <sosx_FNC_READSTREAM>;
+			// ALTERNATIVE
+			readAlternative					:	C_FUNCTION <sosx_FNC_READALTERNATIVE>;
+		END_OPERATIONS;
+	END_CLASS;
+	
+		 CLASS workflowManagement			:	CLASS ov/domain
+	 	IS_INSTANTIABLE;
+		COMMENT = "workflow management for the sosx information model";
+		VARIABLES
+		END_VARIABLES;
+		OPERATIONS
+			importCaexFile					:	C_FUNCTION <sosx_FNC_IMPORTCAEXFILE>;
+			exportCaexFile					:	C_FUNCTION <sosx_FNC_EXPORTCAEXFILE>;
+			exportCaexCyclic				:	C_FUNCTION <sosx_FNC_EXPORTCAEXCYCLIC>;
+			
+			executeSimulationCyclic			:	C_FUNCTION <sosx_FNC_EXECUTESIMULATIONCYCLIC>;
+			
+			getLibraryList					:	C_FUNCTION <sosx_FNC_GETLIBRARYLIST>;
+		
+			createElement					:	C_FUNCTION <sosx_FNC_CREATEELEMENT>;
+			updateElement					:	C_FUNCTION <sosx_FNC_UPDATEELEMENT>;
+			readElement						:	C_FUNCTION <sosx_FNC_READELEMENT>;
+			deleteElement					:	C_FUNCTION <sosx_FNC_DELETEELEMENT>;
+			validateElement					:	C_FUNCTION <sosx_FNC_VALIDATEELEMENT>;
+		END_OPERATIONS;
+	END_CLASS;
+	
+	CLASS sosxdomain : CLASS ov/domain
+		COMMENT = "baseclass for all sosx classes";	
+		VARIABLES
+		readStyle : UINT HAS_ACCESSORS
+		FLAGS = "i"
+		COMMENT = "specifies the readStyle";
+		isValid : UINT HAS_ACCESSORS
+		FLAGS = "o"
+		COMMENT = "isValid level";
+		caexLibrary: STRING HAS_GET_ACCESSOR
+		FLAGS = "i"
+		COMMENT = "object is instance of this class";
+		includeInStateFile : BOOL HAS_SET_ACCESSOR
+		FLAGS = "i"
+		COMMENT = "TRUE: This object will be included into the update export file"
+		INITIALVALUE = FALSE;
+		xPos	: UINT HAS_ACCESSORS
+		FLAGS = "hn"
+		COMMENT = "X position of the graphical representation";
+		yPos	: UINT HAS_ACCESSORS
+		FLAGS = "hn"
+		COMMENT = "Y position of the graphical representation";
+		END_VARIABLES;
+		OPERATIONS
+		restIsValidIfValueChanged	: C_FUNCTION <sosx_FNC_RESTISVALIDIFVALUECHANGED>;	
+		setCaexLibrary				: C_FUNCTION <sosx_FNC_SETCAEXLIBRARY>;
+			
+		getaccess					: C_FUNCTION <OV_FNC_GETACCESS>;
+		destructor					: C_FUNCTION <OV_FNC_DESTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	 
+	/*
+	 * BaseElement
+	 */
+	CLASS BaseElement : CLASS sosx/sosxdomain
+		COMMENT = "with validFrom, validUntil";
+		VARIABLES
+			validFrom : TIME HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "specifies the start of the valid-interval. Expected format YYYY/MM/DD, YYYY/MM/DD hh:mm:ss or YYYY/MM/DD hh:mm:ss.uuuuuu";
+			validUntil: TIME HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "specifies the end of the valid-interval. Expected format YYYY/MM/DD, YYYY/MM/DD hh:mm:ss or YYYY/MM/DD hh:mm:ss.uuuuuu";	
+		END_VARIABLES;
+		OPERATIONS
+		END_OPERATIONS;
+	END_CLASS;
+	
+	/*
+	 * DetailedElement
+	 */
+	CLASS DetailedElement : CLASS sosx/BaseElement
+		COMMENT = "DetailedElement";
+		VARIABLES
+			name : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "name of the element";
+		END_VARIABLES;
+		OPERATIONS
+		END_OPERATIONS;
+	END_CLASS;
+	
+	/*
+	 * Property
+	 */
+	CLASS Property : CLASS sosx/sosxdomain
+		IS_INSTANTIABLE;
+		COMMENT = "Property of a DetailedElement";
+		VARIABLES
+			name : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "name of the property";
+			numPropInfo	:	UINT HAS_GET_ACCESSOR
+			COMMENT = "Number of propertyinformation children";
+		END_VARIABLES;
+		OPERATIONS
+			constructor	:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	/*
+	 * PropertyInformation
+	 */
+	CLASS PropertyInformation : CLASS sosx/BaseElement
+		IS_INSTANTIABLE;
+		COMMENT = "contains information of an Property";
+		VARIABLES
+			type : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "type of the property";
+			source : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "Datatype of the value and valueVec";
+			datatype : INT HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "source of the property";
+			value : ANY HAS_ACCESSORS
+			FLAGS = "o"
+			COMMENT = "current value of the property";
+			valueVec : ANY HAS_ACCESSORS
+			FLAGS = "o"
+			COMMENT = " last x values of the property";
+			index : UINT HAS_ACCESSORS
+			FLAGS = "o"
+			COMMENT = "index for the value of the property"
+			INITIALVALUE = 0;
+			timeStamps[] : TIME HAS_ACCESSORS
+			FLAGS = "o"
+			COMMENT = "index for the value of the property";
+			unit : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "unit of the property";
+			memsize : UINT HAS_ACCESSORS
+			FLAGS = "hn"
+			COMMENT = "unit of the property";
+		END_VARIABLES;
+		OPERATIONS
+			constructor		:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+			addValueToVec	:	C_FUNCTION <sosx_FNC_ADDVALUETOVEC>;
+			addTimeStamp	:	C_FUNCTION <sosx_FNC_ADDTIMESTAMP>;
+		END_OPERATIONS;
+	END_CLASS;
+	/*
+	 * Alternative
+	 */
+	CLASS Alternative : CLASS sosx/BaseElement
+		IS_INSTANTIABLE;
+		COMMENT = "system alternative";
+		VARIABLES
+			name : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "name of the alternative";
+		END_VARIABLES;
+		OPERATIONS
+			constructor	:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	
+	/*
+	*StructureElement
+	*/
+	CLASS StructureElement : CLASS sosx/DetailedElement
+		COMMENT = "element with internal structure";
+		VARIABLES
+			externalInfo[] : STRING HAS_ACCESSORS
+			FLAGS = "o"
+			COMMENT = "Reference to external information";
+			externalInfoStat[] : UINT HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "status of the reference to external information";
+			resetExtInfoStat[] : BOOL HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "reset for status of the reference to external information";
+			width		: INT HAS_ACCESSORS
+			COMMENT = "width of the graphical representation";
+			height		: INT HAS_ACCESSORS
+			COMMENT = "height of the graphical representation";
+		END_VARIABLES;
+		OPERATIONS
+			constructor	:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+		
+	/*
+	 * System
+	 */
+	CLASS System : CLASS sosx/StructureElement
+		IS_INSTANTIABLE;
+		COMMENT = "element with internal structure";
+		VARIABLES
+		END_VARIABLES;
+		OPERATIONS
+			constructor	:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	
+	/*
+	 * Process
+	 */
+	CLASS Process : CLASS sosx/StructureElement
+		IS_INSTANTIABLE;
+		COMMENT = "element with internal structure";
+		VARIABLES
+		END_VARIABLES;
+		OPERATIONS
+			constructor	:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	/*
+	 * StreamHandler
+	 */
+	CLASS StreamHandler : CLASS sosx/DetailedElement
+		COMMENT = "main class for objects that are connected to streams";
+		VARIABLES
+			StreamType : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "defintion of the streamtype";
+			wasConnectedTo : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "StreamHandler was connected to ....";
+			numProp		: UINT	HAS_GET_ACCESSOR
+			COMMENT = "Number of child properties";
+		END_VARIABLES;
+		OPERATIONS
+			constructor	:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	/*
+	 * SourceSink
+	 */
+	CLASS SourceSink : CLASS sosx/StreamHandler
+		IS_INSTANTIABLE;
+		COMMENT = "source/sink element";
+		VARIABLES
+			sourceSinkType : UINT HAS_GET_ACCESSOR
+			COMMENT = "0: Sink 1: Source 2: unassigend"
+			INITIALVALUE = 2;
+		END_VARIABLES;
+		OPERATIONS
+			constructor	:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	/*
+	 * DistributionNode
+	 */
+	CLASS DistributionNode : CLASS sosx/SourceSink
+		IS_INSTANTIABLE;
+		COMMENT = "DistributionNode element";
+		VARIABLES
+		END_VARIABLES;
+		OPERATIONS
+			constructor	:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	/*
+	 * Port
+	 */
+	CLASS Port : CLASS sosx/StreamHandler
+		IS_INSTANTIABLE;
+		COMMENT = "Port for process or system";
+		VARIABLES
+			portType : UINT HAS_GET_ACCESSOR
+			COMMENT = "0: output 1: input 2: unassigend"
+			INITIALVALUE = 2;
+		END_VARIABLES;
+		OPERATIONS
+			constructor	:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	/*
+	 * Stream
+	 */
+	CLASS Stream : CLASS sosx/BaseElement
+		IS_INSTANTIABLE;
+		COMMENT = "transports information, energy or matter";
+		VARIABLES
+			visualLayout : STRING HAS_SET_ACCESSOR
+			FLAGS = "hn"
+			COMMENT = "for the graphical representation";
+		END_VARIABLES;
+		OPERATIONS
+			constructor	:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	
+	CLASS sosxTester : CLASS ov/domain
+	IS_INSTANTIABLE;
+		VARIABLES
+			Source : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "";
+			Target : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "";
+			FileList[] : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "";
+			Do : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "";
+			startTest : BOOL HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "";
+		END_VARIABLES;
+		OPERATIONS
+			constructor	:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+
+	/*
+	 * SystemofSystemsContainer
+	 */
+	CLASS SoSContainer : CLASS sosx/sosxdomain
+		IS_INSTANTIABLE;
+		COMMENT = "Container for the SoS";
+		VARIABLES
+			name : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "name of the element";
+			externalReference[] : STRING HAS_ACCESSORS
+			FLAGS = "i"
+			COMMENT = "externalRef";
+		END_VARIABLES;
+		OPERATIONS
+			constructor	:	C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	
+	/****************************************************
+	* functionblocks
+	*/
+	
+		/****************************************************
+	* execute simulation from Dortmund
+	*/
+	
+		CLASS executeSimulation : CLASS fb/functionblock
+		IS_INSTANTIABLE;
+		VARIABLES
+			lastFileName		: STRING HAS_ACCESSORS
+			FLAGS 				= "i"  
+			COMMENT 			= "name of the last CAEX file";
+			simCmd				: STRING HAS_ACCESSORS
+			FLAGS 				= "i"  
+			COMMENT 			= "Command to execute the simulation"
+			INITIALVALUE		= "dymosim dsin.txt";
+			CeaxArchiveDir		: STRING HAS_ACCESSORS
+			FLAGS 				= "i"  
+			COMMENT 			= "Archive for the Ceax files";
+			SimDir				: STRING HAS_ACCESSORS
+			FLAGS				= "i"
+			COMMENT 			= "simualtion directory";
+			SimResDir			: STRING HAS_ACCESSORS
+			FLAGS				= "i"
+			COMMENT 			= "simualtion result directory";
+			SosxStruct			: STRING HAS_ACCESSORS
+			FLAGS				= "i"
+			COMMENT 			= "name of the root element of the sosx structure";
+			lastCeaxSimFile		: STRING HAS_ACCESSORS
+			FLAGS				= "i"
+			COMMENT 			= "last ceax file used for the simulation";
+			CreateCeaxFile		: BOOL HAS_ACCESSORS
+			FLAGS				= "i"
+			COMMENT 			= "If True fb creates a new CEAX file before executing the simulation. If false last CEAX file will be used"
+			INITIALVALUE		= TRUE;
+		END_VARIABLES;
+		OPERATIONS
+			typemethod : C_FUNCTION <FB_FNC_TYPEMETHOD>;
+			constructor : C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	
+	
+	
+	/***************************************************
+	* exports the CEAX structure on a regular base
+	*/
+	CLASS exportCaexFb : CLASS fb/functionblock
+		IS_INSTANTIABLE;
+		VARIABLES
+			target				: STRING HAS_ACCESSORS FLAGS = "i"  COMMENT = "Target file on the harddrive";
+			source				: STRING HAS_ACCESSORS FLAGS = "i"  COMMENT ="Root ov object";
+		END_VARIABLES;
+		OPERATIONS
+			typemethod : C_FUNCTION <FB_FNC_TYPEMETHOD>;
+			constructor : C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+	
+	
+		/**
+		Monitors a files and indicates changes in the file date. 
+		*/
+	CLASS FileMonitor : CLASS fb/functionblock
+		IS_INSTANTIABLE;
+		VARIABLES
+			filePath[]			: STRING HAS_SET_ACCESSOR FLAGS = "i"  COMMENT = "File to be monitored.";
+			hasChanged[]		: UINT HAS_ACCESSORS FLAGS = "o"  COMMENT="Indicates if file has changed until reset is set to true.";
+			reset[]				: BOOL HAS_SET_ACCESSOR FLAGS = "i"  COMMENT="Resets the hasChanged flag.";
+			filedate[]			: INT COMMENT="Last known date of monitored file.";
+			execute				: BOOL HAS_SET_ACCESSOR FLAGS = "i"  COMMENT="executes the fb in the next second";
+			exCycTime			: TIME_SPAN HAS_SET_ACCESSOR FLAGS = "i" COMMENT="defines the execution cycle time";
+			lastExecutionTime	: TIME 	COMMENT="last time the fb was executed";
+		END_VARIABLES;
+		OPERATIONS
+			typemethod : C_FUNCTION <FB_FNC_TYPEMETHOD>;
+			constructor : C_FUNCTION <OV_FNC_CONSTRUCTOR>;
+		END_OPERATIONS;
+	END_CLASS;
+			
+	/********
+	*getKsVal - Parent for the getVar and getHist functionblock
+	*/
+	
+	CLASS getKsVal : CLASS fb/functionblock
+		COMMENT = "gets ks var and writes it into PropertyInformation";
+		VARIABLES
+			host				: STRING HAS_ACCESSORS
+				FLAGS			= "i"
+				COMMENT 		= "host of the ks server";
+			server 				: STRING HAS_ACCESSORS
+				FLAGS			= "i"
+				COMMENT			= "ks server";
+			path 				: STRING HAS_ACCESSORS
+				FLAGS			= "i"
+				COMMENT			= "ks variable path";
+			doReset				:	BOOL HAS_ACCESSORS
+				FLAGS			=	"i"
+				COMMENT			=	"Reset"
+				INITIALVALUE	=	FALSE;
+			varResult			:	UINT
+				FLAGS			=	"o"
+				COMMENT			=	"Result of requested operation for current variable ov-errorcode"
+				INITIALVALUE	=	0;
+			state				:	INT HAS_ACCESSORS
+				FLAGS			=	"o"
+				COMMENT			=	"Answer as int: 0: initial * 1: request sent, awaiting answer * 2: everything OK * 4: invalid input * 8: internal error * 16: ksapi error * 32: external error * 64: timeout * 128: unknown error"
+				INITIALVALUE	=	0;
+			opResult			:	UINT
+				FLAGS			=	"o"
+				COMMENT			=	"Result of requested operation as ov-errorcode";
+			errorCode			:	UINT
+				FLAGS			=	"o"
+				COMMENT			=	"local ov-ErrorCode";
+			timeout				:	UINT
+				FLAGS			=	"i"
+				COMMENT			=	"Timeout for request in seconds"
+				INITIALVALUE	=	10;	 
+			retryAfter			:	UINT
+				FLAGS			=	"i"
+				COMMENT			=	"In case of error retry after xx seconds. Only active if doCyclic is TRUE."
+				INITIALVALUE	=	300;
+			requestSendTime		:	TIME
+				FLAGS			=	"n"
+				COMMENT			=	"Time when request was sent";
+			sendRequested		:	BOOL
+				FLAGS			=	"n"
+				COMMENT			=	"True means a send was requested"
+				INITIALVALUE	=	FALSE; 
+			cyctimeMem			:	TIME_SPAN
+				COMMENT			=	"memory for the cyctime if in state waiting";
+			waitStateCount		:	UINT
+				COMMENT			=	"Counter for the time spend in state waiting";
+		END_VARIABLES;
+		OPERATIONS
+			constructor			:	C_FUNCTION	<OV_FNC_CONSTRUCTOR>;
+			startup				:	C_FUNCTION	<OV_FNC_STARTUP>;
+			resetall			:	C_FUNCTION	<sosx_FNC_RESETALL>;
+			stopall				:	C_FUNCTION	<sosx_FNC_STOPALL>;
+			startall			:	C_FUNCTION	<sosx_FNC_STARTALL>;
+		END_OPERATIONS;
+	END_CLASS;
+	
+	/*
+	* getVar
+	*/ 
+	CLASS getVar : CLASS sosx/getKsVal
+		IS_INSTANTIABLE;
+		COMMENT = "gets ks var and writes it into PropertyInformation";
+		VARIABLES
+			receivedVar			:	ANY HAS_ACCESSORS
+				FLAGS			=	"o"
+				COMMENT			=	"The value which is read";
+		END_VARIABLES;
+		PARTS
+			apiGet				:	CLASS	ksapi/getVar;
+		END_PARTS;
+		OPERATIONS
+			constructor			:	C_FUNCTION	<OV_FNC_CONSTRUCTOR>;
+			startup				:	C_FUNCTION <OV_FNC_STARTUP>;
+			typemethod 			:	C_FUNCTION <FB_FNC_TYPEMETHOD>;
+		END_OPERATIONS;
+	END_CLASS;
+	
+	/*
+	* getHist
+	*/
+	CLASS getHist : CLASS sosx/getKsVal
+		IS_INSTANTIABLE;
+		COMMENT = "gets ks var and writes it into PropertyInformation";
+		VARIABLES
+		END_VARIABLES;
+		PARTS
+			apiHist				:	CLASS	ksxdrgethist/getHist;
+		END_PARTS;
+		OPERATIONS
+			constructor			:	C_FUNCTION	<OV_FNC_CONSTRUCTOR>;
+			startup				:	C_FUNCTION <OV_FNC_STARTUP>;
+			typemethod 			:	C_FUNCTION <FB_FNC_TYPEMETHOD>;
+		END_OPERATIONS;
+	END_CLASS;
+	
+	/*
+  	 * associations
+	 */
+	 
+	 ASSOCIATION isLinkedToSideA		: 	ONE_TO_MANY
+		PARENT	Output					: 	CLASS sosx/StreamHandler;
+		CHILD	SideA					:	CLASS sosx/Stream;
+	END_ASSOCIATION;
+	
+	ASSOCIATION isLinkedToSideB			: 	ONE_TO_MANY
+		PARENT	Input					:	CLASS sosx/StreamHandler;
+		CHILD	SideB					: 	CLASS sosx/Stream;
+	END_ASSOCIATION;
+		
+END_LIBRARY;
+

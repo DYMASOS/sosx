@@ -1,0 +1,930 @@
+EXPORTS
+    ov_library_open_sosx @1
+    ov_library_open_sosx_old @2
+    passoc_sosx_isLinkedToSideA @3 DATA
+    passoc_sosx_isLinkedToSideB @4 DATA
+    pclass_sosx_Alternative @5 DATA
+    pclass_sosx_BaseElement @6 DATA
+    pclass_sosx_DetailedElement @7 DATA
+    pclass_sosx_DistributionNode @8 DATA
+    pclass_sosx_FileMonitor @9 DATA
+    pclass_sosx_Port @10 DATA
+    pclass_sosx_Process @11 DATA
+    pclass_sosx_Property @12 DATA
+    pclass_sosx_PropertyInformation @13 DATA
+    pclass_sosx_SoSContainer @14 DATA
+    pclass_sosx_SourceSink @15 DATA
+    pclass_sosx_Stream @16 DATA
+    pclass_sosx_StreamHandler @17 DATA
+    pclass_sosx_StructureElement @18 DATA
+    pclass_sosx_System @19 DATA
+    pclass_sosx_api @20 DATA
+    pclass_sosx_exportCaexFb @21 DATA
+    pclass_sosx_getHist @22 DATA
+    pclass_sosx_getKsVal @23 DATA
+    pclass_sosx_getVar @24 DATA
+    pclass_sosx_sosxTester @25 DATA
+    pclass_sosx_sosxdomain @26 DATA
+    sosx_Alternative_constructor @27
+    sosx_Alternative_name_get @28
+    sosx_Alternative_name_set @29
+    sosx_BaseElement_destructor @30
+    sosx_BaseElement_getaccess @31
+    sosx_BaseElement_validFrom_get @32
+    sosx_BaseElement_validFrom_set @33
+    sosx_BaseElement_validUntil_get @34
+    sosx_BaseElement_validUntil_set @35
+    sosx_DetailedElement_name_get @36
+    sosx_DetailedElement_name_set @37
+    sosx_DistributionNode_constructor @38
+    sosx_FileMonitor_constructor @39
+    sosx_FileMonitor_exCycTime_set @40
+    sosx_FileMonitor_execute_set @41
+    sosx_FileMonitor_filePath_set @42
+    sosx_FileMonitor_hasChanged_get @43
+    sosx_FileMonitor_hasChanged_set @44
+    sosx_FileMonitor_reset_set @45
+    sosx_FileMonitor_typemethod @46
+    sosx_Port_StreamType_get @47
+    sosx_Port_StreamType_set @48
+    sosx_Port_constructor @49
+    sosx_Port_portType_get @50
+    sosx_Process_constructor @51
+    sosx_PropertyInformation_addTimeStamp @52
+    sosx_PropertyInformation_addValueToVec @53
+    sosx_PropertyInformation_constructor @54
+    sosx_PropertyInformation_datatype_get @55
+    sosx_PropertyInformation_datatype_set @56
+    sosx_PropertyInformation_index_get @57
+    sosx_PropertyInformation_index_set @58
+    sosx_PropertyInformation_memsize_get @59
+    sosx_PropertyInformation_memsize_set @60
+    sosx_PropertyInformation_source_get @61
+    sosx_PropertyInformation_source_set @62
+    sosx_PropertyInformation_timeStamps_get @63
+    sosx_PropertyInformation_timeStamps_set @64
+    sosx_PropertyInformation_type_get @65
+    sosx_PropertyInformation_type_set @66
+    sosx_PropertyInformation_unit_get @67
+    sosx_PropertyInformation_unit_set @68
+    sosx_PropertyInformation_valueVec_get @69
+    sosx_PropertyInformation_valueVec_set @70
+    sosx_PropertyInformation_value_get @71
+    sosx_PropertyInformation_value_set @72
+    sosx_Property_constructor @73
+    sosx_Property_name_get @74
+    sosx_Property_name_set @75
+    sosx_Property_numPropInfo_get @76
+    sosx_SoSContainer_constructor @77
+    sosx_SoSContainer_externalReference_get @78
+    sosx_SoSContainer_externalReference_set @79
+    sosx_SoSContainer_name_get @80
+    sosx_SoSContainer_name_set @81
+    sosx_SourceSink_constructor @82
+    sosx_SourceSink_sourceSinkType_get @83
+    sosx_StreamHandler_StreamType_get @84
+    sosx_StreamHandler_StreamType_set @85
+    sosx_StreamHandler_constructor @86
+    sosx_StreamHandler_numProp_get @87
+    sosx_StreamHandler_wasConnectedTo_get @88
+    sosx_StreamHandler_wasConnectedTo_set @89
+    sosx_Stream_constructor @90
+    sosx_Stream_visualLayout_set @91
+    sosx_StructureElement_constructor @92
+    sosx_StructureElement_externalInfoStat_get @93
+    sosx_StructureElement_externalInfoStat_set @94
+    sosx_StructureElement_externalInfo_get @95
+    sosx_StructureElement_externalInfo_set @96
+    sosx_StructureElement_height_get @97
+    sosx_StructureElement_height_set @98
+    sosx_StructureElement_resetExtInfoStat_get @99
+    sosx_StructureElement_resetExtInfoStat_set @100
+    sosx_StructureElement_width_get @101
+    sosx_StructureElement_width_set @102
+    sosx_System_constructor @103
+    sosx_api_SimpleDistributionNodeUpdate @104
+    sosx_api_SimplePortUpdate @105
+    sosx_api_SimpleProcessUpdate @106
+    sosx_api_SimplePropertyInformationUpdate @107
+    sosx_api_SimplePropertyUpdate @108
+    sosx_api_SimpleSoSContainerUpdate @109
+    sosx_api_SimpleSourceSinkUpdate @110
+    sosx_api_SimpleStreamUpdate @111
+    sosx_api_SimpleSystemUpdate @112
+    sosx_api_constructor @113
+    sosx_api_createAlternative @114
+    sosx_api_createElement @115
+    sosx_api_createSimpleDistributionNode @116
+    sosx_api_createSimplePort @117
+    sosx_api_createSimpleProcess @118
+    sosx_api_createSimpleProperty @119
+    sosx_api_createSimplePropertyInformation @120
+    sosx_api_createSimpleSoSContainer @121
+    sosx_api_createSimpleSourceSink @122
+    sosx_api_createSimpleStream @123
+    sosx_api_createSimpleSystem @124
+    sosx_api_deleteElement @125
+    sosx_api_exportCaexFile @126
+    sosx_api_getLibraryList @127
+    sosx_api_importCaexFile @128
+    sosx_api_readAlternative @129
+    sosx_api_readDistributionNode @130
+    sosx_api_readElement @131
+    sosx_api_readPort @132
+    sosx_api_readProcess @133
+    sosx_api_readProperty @134
+    sosx_api_readPropertyInformation @135
+    sosx_api_readSoSContainer @136
+    sosx_api_readSourceSink @137
+    sosx_api_readStream @138
+    sosx_api_readSystem @139
+    sosx_api_updateAlternative @140
+    sosx_api_updateDistributionNode @141
+    sosx_api_updateElement @142
+    sosx_api_validateElement @143
+    sosx_exportCaexFb_constructor @144
+    sosx_exportCaexFb_source_get @145
+    sosx_exportCaexFb_source_set @146
+    sosx_exportCaexFb_target_get @147
+    sosx_exportCaexFb_target_set @148
+    sosx_exportCaexFb_typemethod @149
+    sosx_getHist_constructor @150
+    sosx_getHist_startup @151
+    sosx_getHist_typemethod @152
+    sosx_getKsVal_constructor @153
+    sosx_getKsVal_doReset_get @154
+    sosx_getKsVal_doReset_set @155
+    sosx_getKsVal_host_get @156
+    sosx_getKsVal_host_set @157
+    sosx_getKsVal_path_get @158
+    sosx_getKsVal_path_set @159
+    sosx_getKsVal_resetall @160
+    sosx_getKsVal_server_get @161
+    sosx_getKsVal_server_set @162
+    sosx_getKsVal_startup @163
+    sosx_getKsVal_state_get @164
+    sosx_getKsVal_state_set @165
+    sosx_getVar_constructor @166
+    sosx_getVar_receivedVar_get @167
+    sosx_getVar_receivedVar_set @168
+    sosx_getVar_startup @169
+    sosx_getVar_typemethod @170
+    sosx_isLinkedToSideA_getaccess @171
+    sosx_isLinkedToSideA_link @172
+    sosx_isLinkedToSideA_unlink @173
+    sosx_isLinkedToSideB_getaccess @174
+    sosx_isLinkedToSideB_link @175
+    sosx_isLinkedToSideB_unlink @176
+    sosx_sosxTester_Do_get @177
+    sosx_sosxTester_Do_set @178
+    sosx_sosxTester_FileList_get @179
+    sosx_sosxTester_FileList_set @180
+    sosx_sosxTester_Source_get @181
+    sosx_sosxTester_Source_set @182
+    sosx_sosxTester_Target_get @183
+    sosx_sosxTester_Target_set @184
+    sosx_sosxTester_constructor @185
+    sosx_sosxTester_startTest_get @186
+    sosx_sosxTester_startTest_set @187
+    sosx_sosxdomain_caexLibrary_get @188
+    sosx_sosxdomain_destructor @189
+    sosx_sosxdomain_getaccess @190
+    sosx_sosxdomain_isValid_get @191
+    sosx_sosxdomain_isValid_set @192
+    sosx_sosxdomain_readStyle_get @193
+    sosx_sosxdomain_readStyle_set @194
+    sosx_sosxdomain_restIsValidIfValueChanged @195
+    sosx_sosxdomain_setCaexLibrary @196
+    sosx_sosxdomain_xPos_get @197
+    sosx_sosxdomain_xPos_set @198
+    sosx_sosxdomain_yPos_get @199
+    sosx_sosxdomain_yPos_set @200
+
+IMPORTS
+
+    caex.dll.caex_AdditionalInformation_checkConsistency
+    caex.dll.caex_AdditionalInformation_writeXML
+    caex.dll.caex_AttributeNameMapping_checkConsistency
+    caex.dll.caex_AttributeNameMapping_writeXML
+    caex.dll.caex_Attribute_checkConsistency
+    caex.dll.caex_Attribute_writeXML
+    caex.dll.caex_CAEXBasicObject_ChangeMode_set
+    caex.dll.caex_CAEXBasicObject_checkConsistency
+    caex.dll.caex_CAEXFile_checkConsistency
+    caex.dll.caex_CAEXFile_constructor
+    caex.dll.caex_CAEXFile_writeXML
+    caex.dll.caex_CAEXObject_checkConsistency
+    caex.dll.caex_CAEXXMLExporter_checkConsistency
+    caex.dll.caex_CAEXXMLExporter_writeXML
+    caex.dll.caex_CAEXXMLExporter_writeXMLFile_set
+    caex.dll.caex_Constraint_checkConsistency
+    caex.dll.caex_Constraint_writeXML
+    caex.dll.caex_Copyright_checkConsistency
+    caex.dll.caex_Copyright_writeXML
+    caex.dll.caex_DefaultValue_checkConsistency
+    caex.dll.caex_DefaultValue_writeXML
+    caex.dll.caex_Description_checkConsistency
+    caex.dll.caex_Description_writeXML
+    caex.dll.caex_ExternalInterface_checkConsistency
+    caex.dll.caex_ExternalInterface_writeXML
+    caex.dll.caex_ExternalReference_checkConsistency
+    caex.dll.caex_ExternalReference_writeXML
+    caex.dll.caex_InstanceHierarchy_checkConsistency
+    caex.dll.caex_InstanceHierarchy_writeXML
+    caex.dll.caex_InterfaceClassLib_checkConsistency
+    caex.dll.caex_InterfaceClassLib_writeXML
+    caex.dll.caex_InterfaceClass_checkConsistency
+    caex.dll.caex_InterfaceClass_writeXML
+    caex.dll.caex_InterfaceNameMapping_checkConsistency
+    caex.dll.caex_InterfaceNameMapping_writeXML
+    caex.dll.caex_InternalElement_checkConsistency
+    caex.dll.caex_InternalElement_writeXML
+    caex.dll.caex_InternalLink_checkConsistency
+    caex.dll.caex_InternalLink_writeXML
+    caex.dll.caex_MappingObject_checkConsistency
+    caex.dll.caex_MappingObject_writeXML
+    caex.dll.caex_NominalScaledType_checkConsistency
+    caex.dll.caex_NominalScaledType_writeXML
+    caex.dll.caex_OrdinalScaledType_checkConsistency
+    caex.dll.caex_OrdinalScaledType_writeXML
+    caex.dll.caex_RefSemantic_checkConsistency
+    caex.dll.caex_RefSemantic_writeXML
+    caex.dll.caex_RequiredMaxValue_checkConsistency
+    caex.dll.caex_RequiredMaxValue_writeXML
+    caex.dll.caex_RequiredMinValue_checkConsistency
+    caex.dll.caex_RequiredMinValue_writeXML
+    caex.dll.caex_RequiredValue_checkConsistency
+    caex.dll.caex_RequiredValue_writeXML
+    caex.dll.caex_Revision_checkConsistency
+    caex.dll.caex_Revision_writeXML
+    caex.dll.caex_RoleClassLib_checkConsistency
+    caex.dll.caex_RoleClassLib_writeXML
+    caex.dll.caex_RoleClass_checkConsistency
+    caex.dll.caex_RoleClass_writeXML
+    caex.dll.caex_RoleRequirements_checkConsistency
+    caex.dll.caex_RoleRequirements_writeXML
+    caex.dll.caex_SupportedRoleClass_checkConsistency
+    caex.dll.caex_SupportedRoleClass_writeXML
+    caex.dll.caex_SystemUnitClassLib_checkConsistency
+    caex.dll.caex_SystemUnitClassLib_writeXML
+    caex.dll.caex_SystemUnitClass_checkConsistency
+    caex.dll.caex_SystemUnitClass_writeXML
+    caex.dll.caex_UnknownType_checkConsistency
+    caex.dll.caex_UnknownType_writeXML
+    caex.dll.caex_Value_checkConsistency
+    caex.dll.caex_Value_writeXML
+    caex.dll.caex_Version_checkConsistency
+    caex.dll.caex_Version_writeXML
+    caex.dll.caex_caexdomain_getaccess
+    caex.dll.ov_library_open_caex
+    caex.dll.ov_library_open_caex_old
+    caex.dll.pclass_caex_AdditionalInformation
+    caex.dll.pclass_caex_Attribute
+    caex.dll.pclass_caex_AttributeNameMapping
+    caex.dll.pclass_caex_CAEXBasicObject
+    caex.dll.pclass_caex_CAEXFile
+    caex.dll.pclass_caex_CAEXObject
+    caex.dll.pclass_caex_CAEXXMLExporter
+    caex.dll.pclass_caex_Constraint
+    caex.dll.pclass_caex_Copyright
+    caex.dll.pclass_caex_DefaultValue
+    caex.dll.pclass_caex_Description
+    caex.dll.pclass_caex_ExternalInterface
+    caex.dll.pclass_caex_ExternalReference
+    caex.dll.pclass_caex_InstanceHierarchy
+    caex.dll.pclass_caex_InterfaceClass
+    caex.dll.pclass_caex_InterfaceClassLib
+    caex.dll.pclass_caex_InterfaceNameMapping
+    caex.dll.pclass_caex_InternalElement
+    caex.dll.pclass_caex_InternalLink
+    caex.dll.pclass_caex_MappingObject
+    caex.dll.pclass_caex_NominalScaledType
+    caex.dll.pclass_caex_OrdinalScaledType
+    caex.dll.pclass_caex_RefSemantic
+    caex.dll.pclass_caex_RequiredMaxValue
+    caex.dll.pclass_caex_RequiredMinValue
+    caex.dll.pclass_caex_RequiredValue
+    caex.dll.pclass_caex_Revision
+    caex.dll.pclass_caex_RoleClass
+    caex.dll.pclass_caex_RoleClassLib
+    caex.dll.pclass_caex_RoleRequirements
+    caex.dll.pclass_caex_SupportedRoleClass
+    caex.dll.pclass_caex_SystemUnitClass
+    caex.dll.pclass_caex_SystemUnitClassLib
+    caex.dll.pclass_caex_UnknownType
+    caex.dll.pclass_caex_Value
+    caex.dll.pclass_caex_Version
+    caex.dll.pclass_caex_caexdomain
+    fb.dll.FbExecLog_getLogEntry
+    fb.dll.FbExecLog_setLogEntry
+    fb.dll.FbSvcLog_decrIndent
+    fb.dll.FbSvcLog_incrIndent
+    fb.dll.FbSvcLog_printexecitem
+    fb.dll.FbSvcLog_printsvc
+    fb.dll.FbSvcLog_startexeclog
+    fb.dll.fb___getenv
+    fb.dll.fb_connection_checkelements
+    fb.dll.fb_connection_checkinit
+    fb.dll.fb_connection_constructor
+    fb.dll.fb_connection_create
+    fb.dll.fb_connection_destructor
+    fb.dll.fb_connection_getFirstConnectedObject
+    fb.dll.fb_connection_getaccess
+    fb.dll.fb_connection_on_set
+    fb.dll.fb_connection_sourceport_set
+    fb.dll.fb_connection_startup
+    fb.dll.fb_connection_targetport_set
+    fb.dll.fb_connection_trigger
+    fb.dll.fb_database_checkstruct
+    fb.dll.fb_database_create
+    fb.dll.fb_database_flush
+    fb.dll.fb_database_getdbinfo
+    fb.dll.fb_database_getlibcontainer
+    fb.dll.fb_database_geturtask
+    fb.dll.fb_database_identifierok
+    fb.dll.fb_database_map
+    fb.dll.fb_database_shutdown
+    fb.dll.fb_database_startup
+    fb.dll.fb_database_unmap
+    fb.dll.fb_dbinfoclass_command_get
+    fb.dll.fb_dbinfoclass_command_set
+    fb.dll.fb_dbinfoclass_constructor
+    fb.dll.fb_dbinfoclass_destructor
+    fb.dll.fb_dbinfoclass_flush_get
+    fb.dll.fb_dbinfoclass_flush_set
+    fb.dll.fb_dbinfoclass_getaccess
+    fb.dll.fb_dbinfoclass_licinfo_get
+    fb.dll.fb_dbinfoclass_shutdown
+    fb.dll.fb_dbinfoclass_startup
+    fb.dll.fb_dbinfoclass_ticket_get
+    fb.dll.fb_dbinfoclass_ticket_set
+    fb.dll.fb_dbinfoclass_version_get
+    fb.dll.fb_functionblock_checkinit
+    fb.dll.fb_functionblock_constructor
+    fb.dll.fb_functionblock_destructor
+    fb.dll.fb_functionblock_execTypeMethod
+    fb.dll.fb_functionblock_execute
+    fb.dll.fb_functionblock_getaccess
+    fb.dll.fb_functionblock_getflags
+    fb.dll.fb_functionblock_getvar
+    fb.dll.fb_functionblock_setvar
+    fb.dll.fb_functionblock_shutdown
+    fb.dll.fb_functionblock_startup
+    fb.dll.fb_functionblock_triggerInpGetConnections
+    fb.dll.fb_functionblock_triggerOutSendConnections
+    fb.dll.fb_functionchart_getport
+    fb.dll.fb_functionchart_setport
+    fb.dll.fb_functionchart_typemethod
+    fb.dll.fb_inputconnections_getaccess
+    fb.dll.fb_inputconnections_link
+    fb.dll.fb_inputconnections_unlink
+    fb.dll.fb_object_constructor
+    fb.dll.fb_object_getaccess
+    fb.dll.fb_object_getflags
+    fb.dll.fb_object_getvar
+    fb.dll.fb_object_setvar
+    fb.dll.fb_object_triggerInpGetConnections
+    fb.dll.fb_object_triggerOutSendConnections
+    fb.dll.fb_outputconnections_getaccess
+    fb.dll.fb_outputconnections_link
+    fb.dll.fb_outputconnections_unlink
+    fb.dll.fb_port_constructor
+    fb.dll.fb_port_flags_set
+    fb.dll.fb_port_getcomment
+    fb.dll.fb_port_getflags
+    fb.dll.fb_port_gettechunit
+    fb.dll.fb_port_setvar
+    fb.dll.fb_set_varvalue
+    fb.dll.fb_setlicinfo
+    fb.dll.fb_task_actimode_set
+    fb.dll.fb_task_constructor
+    fb.dll.fb_task_cyctime_set
+    fb.dll.fb_task_destructor
+    fb.dll.fb_task_execChildObjects
+    fb.dll.fb_task_execute
+    fb.dll.fb_task_getaccess
+    fb.dll.fb_task_proctime_set
+    fb.dll.fb_task_run
+    fb.dll.fb_task_setNextProcTime
+    fb.dll.fb_task_shutdown
+    fb.dll.fb_task_startup
+    fb.dll.fb_tasklist_getaccess
+    fb.dll.fb_tasklist_link
+    fb.dll.fb_tasklist_unlink
+    fb.dll.fb_variables_getaccess
+    fb.dll.fb_variables_link
+    fb.dll.fb_variables_unlink
+    fb.dll.fb_vartype_implemented
+    fb.dll.ov_library_open_fb
+    fb.dll.ov_library_open_fb_old
+    fb.dll.passoc_fb_inputconnections
+    fb.dll.passoc_fb_outputconnections
+    fb.dll.passoc_fb_tasklist
+    fb.dll.passoc_fb_variables
+    fb.dll.pclass_fb_anyport
+    fb.dll.pclass_fb_boolport
+    fb.dll.pclass_fb_boolvecport
+    fb.dll.pclass_fb_connection
+    fb.dll.pclass_fb_dbinfoclass
+    fb.dll.pclass_fb_doubleport
+    fb.dll.pclass_fb_doublevecport
+    fb.dll.pclass_fb_functionblock
+    fb.dll.pclass_fb_functionchart
+    fb.dll.pclass_fb_intport
+    fb.dll.pclass_fb_intvecport
+    fb.dll.pclass_fb_object
+    fb.dll.pclass_fb_port
+    fb.dll.pclass_fb_singleport
+    fb.dll.pclass_fb_singlevecport
+    fb.dll.pclass_fb_stringport
+    fb.dll.pclass_fb_stringvecport
+    fb.dll.pclass_fb_task
+    fb.dll.pclass_fb_timeport
+    fb.dll.pclass_fb_timespanport
+    fb.dll.pclass_fb_timespanvecport
+    fb.dll.pclass_fb_timevecport
+    fb.dll.pclass_fb_uintport
+    fb.dll.pclass_fb_uintvecport
+    fbcomlib.dll.fbcomlib_FBComCommon_constructor
+    fbcomlib.dll.fbcomlib_FBComCommon_doCyclic_get
+    fbcomlib.dll.fbcomlib_FBComCommon_doCyclic_set
+    fbcomlib.dll.fbcomlib_FBComCommon_doSend_get
+    fbcomlib.dll.fbcomlib_FBComCommon_doSend_set
+    fbcomlib.dll.fbcomlib_FBComCommon_host_get
+    fbcomlib.dll.fbcomlib_FBComCommon_host_set
+    fbcomlib.dll.fbcomlib_FBComCommon_path_get
+    fbcomlib.dll.fbcomlib_FBComCommon_path_set
+    fbcomlib.dll.fbcomlib_FBComCommon_resetAbstract
+    fbcomlib.dll.fbcomlib_FBComCommon_server_get
+    fbcomlib.dll.fbcomlib_FBComCommon_server_set
+    fbcomlib.dll.fbcomlib_FBComCommon_stateString_get
+    fbcomlib.dll.fbcomlib_FBComCommon_state_get
+    fbcomlib.dll.fbcomlib_FBComCommon_state_set
+    fbcomlib.dll.fbcomlib_PkgVar_getaccess
+    fbcomlib.dll.fbcomlib_PkgVar_link
+    fbcomlib.dll.fbcomlib_PkgVar_unlink
+    fbcomlib.dll.fbcomlib_createObject_doReset_get
+    fbcomlib.dll.fbcomlib_createObject_doReset_set
+    fbcomlib.dll.fbcomlib_createObject_startup
+    fbcomlib.dll.fbcomlib_createObject_typemethod
+    fbcomlib.dll.fbcomlib_deleteObject_doReset_get
+    fbcomlib.dll.fbcomlib_deleteObject_doReset_set
+    fbcomlib.dll.fbcomlib_deleteObject_startup
+    fbcomlib.dll.fbcomlib_deleteObject_typemethod
+    fbcomlib.dll.fbcomlib_getEPidentifiers_constructor
+    fbcomlib.dll.fbcomlib_getEPidentifiers_doReset_get
+    fbcomlib.dll.fbcomlib_getEPidentifiers_doReset_set
+    fbcomlib.dll.fbcomlib_getEPidentifiers_startup
+    fbcomlib.dll.fbcomlib_getEPidentifiers_typemethod
+    fbcomlib.dll.fbcomlib_getVar_constructor
+    fbcomlib.dll.fbcomlib_getVar_doReset_get
+    fbcomlib.dll.fbcomlib_getVar_doReset_set
+    fbcomlib.dll.fbcomlib_getVar_startup
+    fbcomlib.dll.fbcomlib_getVar_typemethod
+    fbcomlib.dll.fbcomlib_linkObject_doReset_get
+    fbcomlib.dll.fbcomlib_linkObject_doReset_set
+    fbcomlib.dll.fbcomlib_linkObject_startup
+    fbcomlib.dll.fbcomlib_linkObject_typemethod
+    fbcomlib.dll.fbcomlib_pkgGetVariable_constructor
+    fbcomlib.dll.fbcomlib_pkgGetVariable_typemethod
+    fbcomlib.dll.fbcomlib_pkgSetVariable_constructor
+    fbcomlib.dll.fbcomlib_pkgSetVariable_typemethod
+    fbcomlib.dll.fbcomlib_pkgVariable_path_set
+    fbcomlib.dll.fbcomlib_renameObject_doReset_get
+    fbcomlib.dll.fbcomlib_renameObject_doReset_set
+    fbcomlib.dll.fbcomlib_renameObject_startup
+    fbcomlib.dll.fbcomlib_renameObject_typemethod
+    fbcomlib.dll.fbcomlib_setVar_constructor
+    fbcomlib.dll.fbcomlib_setVar_doReset_get
+    fbcomlib.dll.fbcomlib_setVar_doReset_set
+    fbcomlib.dll.fbcomlib_setVar_sendVar_set
+    fbcomlib.dll.fbcomlib_setVar_startup
+    fbcomlib.dll.fbcomlib_setVar_typemethod
+    fbcomlib.dll.fbcomlib_unlinkObject_doReset_get
+    fbcomlib.dll.fbcomlib_unlinkObject_doReset_set
+    fbcomlib.dll.fbcomlib_unlinkObject_startup
+    fbcomlib.dll.fbcomlib_unlinkObject_typemethod
+    fbcomlib.dll.ov_library_open_fbcomlib
+    fbcomlib.dll.ov_library_open_fbcomlib_old
+    fbcomlib.dll.passoc_fbcomlib_PkgVar
+    fbcomlib.dll.pclass_fbcomlib_FBComCommon
+    fbcomlib.dll.pclass_fbcomlib_createObject
+    fbcomlib.dll.pclass_fbcomlib_deleteObject
+    fbcomlib.dll.pclass_fbcomlib_getEPidentifiers
+    fbcomlib.dll.pclass_fbcomlib_getVar
+    fbcomlib.dll.pclass_fbcomlib_linkObject
+    fbcomlib.dll.pclass_fbcomlib_pkgGetVariable
+    fbcomlib.dll.pclass_fbcomlib_pkgSetVariable
+    fbcomlib.dll.pclass_fbcomlib_pkgVariable
+    fbcomlib.dll.pclass_fbcomlib_renameObject
+    fbcomlib.dll.pclass_fbcomlib_setVar
+    fbcomlib.dll.pclass_fbcomlib_unlinkObject
+    fbcomlib.dll.pclass_fbcomlib_variableOperation
+    ksapi.dll.ksapi_KSApiCommon_Reset_set
+    ksapi.dll.ksapi_KSApiCommon_Submit_set
+    ksapi.dll.ksapi_KSApiCommon_genSetForSubmit
+    ksapi.dll.ksapi_KSApiCommon_getaccess
+    ksapi.dll.ksapi_KSApiCommon_prepareSubmit
+    ksapi.dll.ksapi_KSApiCommon_shutdown
+    ksapi.dll.ksapi_KSApiCommon_startup
+    ksapi.dll.ksapi_KSApiCommon_submit
+    ksapi.dll.ksapi_Variable_constructor
+    ksapi.dll.ksapi_Variable_destructor
+    ksapi.dll.ksapi_Variable_getaccess
+    ksapi.dll.ksapi_Variable_shutdown
+    ksapi.dll.ksapi_Variable_startup
+    ksapi.dll.ksapi_createObject_setandsubmit
+    ksapi.dll.ksapi_createObject_startup
+    ksapi.dll.ksapi_createObject_submit
+    ksapi.dll.ksapi_deleteObject_setandsubmit
+    ksapi.dll.ksapi_deleteObject_startup
+    ksapi.dll.ksapi_deleteObject_submit
+    ksapi.dll.ksapi_getEP_constructor
+    ksapi.dll.ksapi_getEP_setandsubmit
+    ksapi.dll.ksapi_getEP_shutdown
+    ksapi.dll.ksapi_getEP_startup
+    ksapi.dll.ksapi_getEP_submit
+    ksapi.dll.ksapi_getEPidentifiers_constructor
+    ksapi.dll.ksapi_getEPidentifiers_setandsubmit
+    ksapi.dll.ksapi_getEPidentifiers_shutdown
+    ksapi.dll.ksapi_getEPidentifiers_startup
+    ksapi.dll.ksapi_getEPidentifiers_submit
+    ksapi.dll.ksapi_getVar_constructor
+    ksapi.dll.ksapi_getVar_destructor
+    ksapi.dll.ksapi_getVar_setandsubmit
+    ksapi.dll.ksapi_getVar_shutdown
+    ksapi.dll.ksapi_getVar_startup
+    ksapi.dll.ksapi_getVar_submit
+    ksapi.dll.ksapi_linkObject_setandsubmit
+    ksapi.dll.ksapi_linkObject_shutdown
+    ksapi.dll.ksapi_linkObject_startup
+    ksapi.dll.ksapi_linkObject_submit
+    ksapi.dll.ksapi_operationToVariable_getaccess
+    ksapi.dll.ksapi_operationToVariable_link
+    ksapi.dll.ksapi_operationToVariable_unlink
+    ksapi.dll.ksapi_renameObject_setandsubmit
+    ksapi.dll.ksapi_renameObject_shutdown
+    ksapi.dll.ksapi_renameObject_startup
+    ksapi.dll.ksapi_renameObject_submit
+    ksapi.dll.ksapi_setVar_constructor
+    ksapi.dll.ksapi_setVar_destructor
+    ksapi.dll.ksapi_setVar_setandsubmit
+    ksapi.dll.ksapi_setVar_shutdown
+    ksapi.dll.ksapi_setVar_startup
+    ksapi.dll.ksapi_setVar_submit
+    ksapi.dll.ksapi_unlinkObject_setandsubmit
+    ksapi.dll.ksapi_unlinkObject_shutdown
+    ksapi.dll.ksapi_unlinkObject_startup
+    ksapi.dll.ksapi_unlinkObject_submit
+    ksapi.dll.ksapi_variableOperation_constructor
+    ksapi.dll.ksapi_variableOperation_destructor
+    ksapi.dll.ksapi_variableOperation_startup
+    ksapi.dll.ov_library_open_ksapi
+    ksapi.dll.passoc_ksapi_operationToVariable
+    ksapi.dll.pclass_ksapi_KSApiCommon
+    ksapi.dll.pclass_ksapi_Variable
+    ksapi.dll.pclass_ksapi_createObject
+    ksapi.dll.pclass_ksapi_deleteObject
+    ksapi.dll.pclass_ksapi_getEP
+    ksapi.dll.pclass_ksapi_getEPidentifiers
+    ksapi.dll.pclass_ksapi_getVar
+    ksapi.dll.pclass_ksapi_linkObject
+    ksapi.dll.pclass_ksapi_renameObject
+    ksapi.dll.pclass_ksapi_setVar
+    ksapi.dll.pclass_ksapi_unlinkObject
+    ksapi.dll.pclass_ksapi_variableOperation
+    ksbase.dll.ks_isvalidname
+    ksbase.dll.ks_logfile_debug
+    ksbase.dll.ks_logfile_error
+    ksbase.dll.ks_logfile_info
+    ksbase.dll.ks_logfile_print_sysMsg
+    ksbase.dll.ks_logfile_warning
+    ksbase.dll.ks_splitOneStringPath
+    ksbase.dll.ksbase_AssocChannelClientHandler_getaccess
+    ksbase.dll.ksbase_AssocChannelClientHandler_link
+    ksbase.dll.ksbase_AssocChannelClientHandler_unlink
+    ksbase.dll.ksbase_AssocChannelDataHandler_getaccess
+    ksbase.dll.ksbase_AssocChannelDataHandler_link
+    ksbase.dll.ksbase_AssocChannelDataHandler_unlink
+    ksbase.dll.ksbase_AssocClientToTicketGenerator_getaccess
+    ksbase.dll.ksbase_AssocClientToTicketGenerator_link
+    ksbase.dll.ksbase_AssocClientToTicketGenerator_unlink
+    ksbase.dll.ksbase_AssocComTaskList_getaccess
+    ksbase.dll.ksbase_AssocComTaskList_link
+    ksbase.dll.ksbase_AssocComTaskList_unlink
+    ksbase.dll.ksbase_AssocCurrentChannel_getaccess
+    ksbase.dll.ksbase_AssocCurrentChannel_link
+    ksbase.dll.ksbase_AssocCurrentChannel_unlink
+    ksbase.dll.ksbase_Channel_shutdown
+    ksbase.dll.ksbase_Channel_startup
+    ksbase.dll.ksbase_ClientBase_processCreateObject
+    ksbase.dll.ksbase_ClientBase_processDeleteObject
+    ksbase.dll.ksbase_ClientBase_processGetCanonicalPath
+    ksbase.dll.ksbase_ClientBase_processGetEP
+    ksbase.dll.ksbase_ClientBase_processGetPP
+    ksbase.dll.ksbase_ClientBase_processGetServer
+    ksbase.dll.ksbase_ClientBase_processGetVar
+    ksbase.dll.ksbase_ClientBase_processLink
+    ksbase.dll.ksbase_ClientBase_processRegister
+    ksbase.dll.ksbase_ClientBase_processRenameObject
+    ksbase.dll.ksbase_ClientBase_processSetVar
+    ksbase.dll.ksbase_ClientBase_processUnLink
+    ksbase.dll.ksbase_ClientBase_processUnRegister
+    ksbase.dll.ksbase_ClientBase_requestCreateObject
+    ksbase.dll.ksbase_ClientBase_requestDeleteObject
+    ksbase.dll.ksbase_ClientBase_requestGetCanonicalPath
+    ksbase.dll.ksbase_ClientBase_requestGetEP
+    ksbase.dll.ksbase_ClientBase_requestGetPP
+    ksbase.dll.ksbase_ClientBase_requestGetServer
+    ksbase.dll.ksbase_ClientBase_requestGetVar
+    ksbase.dll.ksbase_ClientBase_requestLink
+    ksbase.dll.ksbase_ClientBase_requestRegister
+    ksbase.dll.ksbase_ClientBase_requestRenameObject
+    ksbase.dll.ksbase_ClientBase_requestSetVar
+    ksbase.dll.ksbase_ClientBase_requestUnLink
+    ksbase.dll.ksbase_ClientBase_requestUnRegister
+    ksbase.dll.ksbase_ClientBase_reset
+    ksbase.dll.ksbase_ClientBase_serverHost_set
+    ksbase.dll.ksbase_ClientBase_serverName_set
+    ksbase.dll.ksbase_ClientHandler_shutdown
+    ksbase.dll.ksbase_ClientHandler_startup
+    ksbase.dll.ksbase_ClientTicketGenerator_decodeReply
+    ksbase.dll.ksbase_ClientTicketGenerator_encodeTicket
+    ksbase.dll.ksbase_ComTask_actimode_get
+    ksbase.dll.ksbase_ComTask_actimode_set
+    ksbase.dll.ksbase_ComTask_calcExec
+    ksbase.dll.ksbase_ComTask_constructor
+    ksbase.dll.ksbase_ComTask_cycInterval_get
+    ksbase.dll.ksbase_ComTask_cycInterval_set
+    ksbase.dll.ksbase_ComTask_destructor
+    ksbase.dll.ksbase_ComTask_getaccess
+    ksbase.dll.ksbase_ComTask_typemethod
+    ksbase.dll.ksbase_KSDATAPACKET_append
+    ksbase.dll.ksbase_KSDATAPACKET_set
+    ksbase.dll.ksbase_Manager_getaccess
+    ksbase.dll.ksbase_Manager_getserverdata
+    ksbase.dll.ksbase_Manager_register
+    ksbase.dll.ksbase_Manager_shutdown
+    ksbase.dll.ksbase_Manager_unregister
+    ksbase.dll.ksbase_NoneAuth
+    ksbase.dll.ksbase_NoneTicketAuthenticator_TicketGetaccess
+    ksbase.dll.ksbase_NoneTicketAuthenticator_constructor
+    ksbase.dll.ksbase_NoneTicketAuthenticator_createticket
+    ksbase.dll.ksbase_NoneTicketAuthenticator_deleteticket
+    ksbase.dll.ksbase_NoneTicketAuthenticator_encodereply
+    ksbase.dll.ksbase_NoneTicketAuthenticator_startup
+    ksbase.dll.ksbase_NoneTicketGenerator_decodeReply
+    ksbase.dll.ksbase_NoneTicketGenerator_encodeTicket
+    ksbase.dll.ksbase_NoneTicketGenerator_startup
+    ksbase.dll.ksbase_ProtocolIdentificator_createClientHandler
+    ksbase.dll.ksbase_ProtocolIdentificator_getaccess
+    ksbase.dll.ksbase_ProtocolIdentificator_identify
+    ksbase.dll.ksbase_RootComTask_constructor
+    ksbase.dll.ksbase_RootComTask_cycsecs_get
+    ksbase.dll.ksbase_RootComTask_cycsecs_set
+    ksbase.dll.ksbase_RootComTask_cycusecs_get
+    ksbase.dll.ksbase_RootComTask_cycusecs_set
+    ksbase.dll.ksbase_RootComTask_getaccess
+    ksbase.dll.ksbase_RootComTask_shutdown
+    ksbase.dll.ksbase_RootComTask_startup
+    ksbase.dll.ksbase_ServerRep_constructor
+    ksbase.dll.ksbase_ServerRep_expirationtime_get
+    ksbase.dll.ksbase_ServerRep_expirationtime_set
+    ksbase.dll.ksbase_ServerRep_name_get
+    ksbase.dll.ksbase_ServerRep_name_set
+    ksbase.dll.ksbase_ServerRep_port_get
+    ksbase.dll.ksbase_ServerRep_port_set
+    ksbase.dll.ksbase_ServerRep_protocols_get
+    ksbase.dll.ksbase_ServerRep_protocols_set
+    ksbase.dll.ksbase_ServerRep_regtime_get
+    ksbase.dll.ksbase_ServerRep_regtime_set
+    ksbase.dll.ksbase_ServerRep_shutdown
+    ksbase.dll.ksbase_ServerRep_startup
+    ksbase.dll.ksbase_ServerRep_state_get
+    ksbase.dll.ksbase_ServerRep_state_set
+    ksbase.dll.ksbase_ServerRep_timetolive_get
+    ksbase.dll.ksbase_ServerRep_timetolive_set
+    ksbase.dll.ksbase_ServerRep_typemethod
+    ksbase.dll.ksbase_ServerRep_version_get
+    ksbase.dll.ksbase_ServerRep_version_set
+    ksbase.dll.ksbase_TicketAuthenticator_ACDelete_get
+    ksbase.dll.ksbase_TicketAuthenticator_ACDelete_set
+    ksbase.dll.ksbase_TicketAuthenticator_ACInstantiate_get
+    ksbase.dll.ksbase_TicketAuthenticator_ACInstantiate_set
+    ksbase.dll.ksbase_TicketAuthenticator_ACLink_get
+    ksbase.dll.ksbase_TicketAuthenticator_ACLink_set
+    ksbase.dll.ksbase_TicketAuthenticator_ACRead_get
+    ksbase.dll.ksbase_TicketAuthenticator_ACRead_set
+    ksbase.dll.ksbase_TicketAuthenticator_ACRename_get
+    ksbase.dll.ksbase_TicketAuthenticator_ACRename_set
+    ksbase.dll.ksbase_TicketAuthenticator_ACUnlink_get
+    ksbase.dll.ksbase_TicketAuthenticator_ACUnlink_set
+    ksbase.dll.ksbase_TicketAuthenticator_ACWrite_get
+    ksbase.dll.ksbase_TicketAuthenticator_ACWrite_set
+    ksbase.dll.ksbase_TicketAuthenticator_TicketGetaccess
+    ksbase.dll.ksbase_TicketAuthenticator_constructor
+    ksbase.dll.ksbase_TicketAuthenticator_createticket
+    ksbase.dll.ksbase_TicketAuthenticator_deleteticket
+    ksbase.dll.ksbase_TicketAuthenticator_encodereply
+    ksbase.dll.ksbase_TicketAuthenticator_shutdown
+    ksbase.dll.ksbase_TicketAuthenticator_startup
+    ksbase.dll.ksbase_free_KSDATAPACKET
+    ksbase.dll.noneticketvtbl
+    ksbase.dll.ov_ksserver_createobject
+    ksbase.dll.ov_ksserver_deleteobject
+    ksbase.dll.ov_ksserver_exgdata
+    ksbase.dll.ov_ksserver_getcanonicalpath
+    ksbase.dll.ov_ksserver_getep
+    ksbase.dll.ov_ksserver_gethist
+    ksbase.dll.ov_ksserver_getpp
+    ksbase.dll.ov_ksserver_getvar
+    ksbase.dll.ov_ksserver_link
+    ksbase.dll.ov_ksserver_renameobject
+    ksbase.dll.ov_ksserver_setvar
+    ksbase.dll.ov_ksserver_svclog_register
+    ksbase.dll.ov_ksserver_svclog_unregister
+    ksbase.dll.ov_ksserver_ticket_setnoneticketaccess
+    ksbase.dll.ov_ksserver_unlink
+    ksbase.dll.ov_library_open_ksbase
+    ksbase.dll.ov_library_open_ksbase_old
+    ksbase.dll.passoc_ksbase_AssocChannelClientHandler
+    ksbase.dll.passoc_ksbase_AssocChannelDataHandler
+    ksbase.dll.passoc_ksbase_AssocClientToTicketGenerator
+    ksbase.dll.passoc_ksbase_AssocComTaskList
+    ksbase.dll.passoc_ksbase_AssocCurrentChannel
+    ksbase.dll.pclass_ksbase_Channel
+    ksbase.dll.pclass_ksbase_ClientBase
+    ksbase.dll.pclass_ksbase_ClientHandler
+    ksbase.dll.pclass_ksbase_ClientTicketGenerator
+    ksbase.dll.pclass_ksbase_ComTask
+    ksbase.dll.pclass_ksbase_DataHandler
+    ksbase.dll.pclass_ksbase_Manager
+    ksbase.dll.pclass_ksbase_NoneTicketAuthenticator
+    ksbase.dll.pclass_ksbase_NoneTicketGenerator
+    ksbase.dll.pclass_ksbase_ProtocolIdentificator
+    ksbase.dll.pclass_ksbase_RootComTask
+    ksbase.dll.pclass_ksbase_ServerRep
+    ksbase.dll.pclass_ksbase_TicketAuthenticator
+    ksbase.dll.pclass_ksbase_baseClientHandlerExtension
+    ksxdr.dll.KS_DATAPACKET_read_xdr_OV_NAMED_ELEMENT
+    ksxdr.dll.KS_DATAPACKET_read_xdr_OV_TIME
+    ksxdr.dll.KS_DATAPACKET_read_xdr_OV_TIME_SPAN
+    ksxdr.dll.KS_DATAPACKET_read_xdr_OV_VAR_VALUE
+    ksxdr.dll.KS_DATAPACKET_read_xdr_array_tomemstack
+    ksxdr.dll.KS_DATAPACKET_read_xdr_double
+    ksxdr.dll.KS_DATAPACKET_read_xdr_int
+    ksxdr.dll.KS_DATAPACKET_read_xdr_opaque
+    ksxdr.dll.KS_DATAPACKET_read_xdr_opaque_fixedlength
+    ksxdr.dll.KS_DATAPACKET_read_xdr_opaque_tomemstack
+    ksxdr.dll.KS_DATAPACKET_read_xdr_single
+    ksxdr.dll.KS_DATAPACKET_read_xdr_string
+    ksxdr.dll.KS_DATAPACKET_read_xdr_string_tomemstack
+    ksxdr.dll.KS_DATAPACKET_read_xdr_string_tomemstack_wolength
+    ksxdr.dll.KS_DATAPACKET_read_xdr_string_wolength
+    ksxdr.dll.KS_DATAPACKET_read_xdr_uint
+    ksxdr.dll.KS_DATAPACKET_write_xdr_OV_NAMED_ELEMENT
+    ksxdr.dll.KS_DATAPACKET_write_xdr_OV_TIME
+    ksxdr.dll.KS_DATAPACKET_write_xdr_OV_TIME_SPAN
+    ksxdr.dll.KS_DATAPACKET_write_xdr_OV_VAR_VALUE
+    ksxdr.dll.KS_DATAPACKET_write_xdr_array
+    ksxdr.dll.KS_DATAPACKET_write_xdr_double
+    ksxdr.dll.KS_DATAPACKET_write_xdr_int
+    ksxdr.dll.KS_DATAPACKET_write_xdr_opaque
+    ksxdr.dll.KS_DATAPACKET_write_xdr_opaque_fixedlength
+    ksxdr.dll.KS_DATAPACKET_write_xdr_single
+    ksxdr.dll.KS_DATAPACKET_write_xdr_string
+    ksxdr.dll.KS_DATAPACKET_write_xdr_uint
+    ksxdr.dll.ksxdr_PMAskList_HandleData
+    ksxdr.dll.ksxdr_PMAskList_hosts_set
+    ksxdr.dll.ksxdr_PMAskList_shutdown
+    ksxdr.dll.ksxdr_PMAskList_startup
+    ksxdr.dll.ksxdr_PMAskList_typemethod
+    ksxdr.dll.ksxdr_create_global_answer
+    ksxdr.dll.ksxdr_generateClientMessageHeader
+    ksxdr.dll.ksxdr_getChannelPointer
+    ksxdr.dll.ksxdr_initiateConnection
+    ksxdr.dll.ksxdr_insertTicket
+    ksxdr.dll.ksxdr_prepend_length
+    ksxdr.dll.ksxdr_processServerReplyHeader
+    ksxdr.dll.ksxdr_readBackTicket
+    ksxdr.dll.ksxdr_trySend
+    ksxdr.dll.ksxdr_xdrClientHandler_HandleRequest
+    ksxdr.dll.ksxdr_xdrClientHandler_appendKsReplyBody
+    ksxdr.dll.ksxdr_xdrClientHandler_encodeReplyHeader
+    ksxdr.dll.ksxdr_xdrClientHandler_shutdown
+    ksxdr.dll.ksxdr_xdrClientHandler_startup
+    ksxdr.dll.ksxdr_xdrClient_HandleData
+    ksxdr.dll.ksxdr_xdrClient_processCreateObject
+    ksxdr.dll.ksxdr_xdrClient_processDeleteObject
+    ksxdr.dll.ksxdr_xdrClient_processGetCanonicalPath
+    ksxdr.dll.ksxdr_xdrClient_processGetEP
+    ksxdr.dll.ksxdr_xdrClient_processGetPP
+    ksxdr.dll.ksxdr_xdrClient_processGetServer
+    ksxdr.dll.ksxdr_xdrClient_processGetVar
+    ksxdr.dll.ksxdr_xdrClient_processLink
+    ksxdr.dll.ksxdr_xdrClient_processRegister
+    ksxdr.dll.ksxdr_xdrClient_processRenameObject
+    ksxdr.dll.ksxdr_xdrClient_processSetVar
+    ksxdr.dll.ksxdr_xdrClient_processUnLink
+    ksxdr.dll.ksxdr_xdrClient_processUnRegister
+    ksxdr.dll.ksxdr_xdrClient_requestCreateObject
+    ksxdr.dll.ksxdr_xdrClient_requestDeleteObject
+    ksxdr.dll.ksxdr_xdrClient_requestGetCanonicalPath
+    ksxdr.dll.ksxdr_xdrClient_requestGetEP
+    ksxdr.dll.ksxdr_xdrClient_requestGetPP
+    ksxdr.dll.ksxdr_xdrClient_requestGetServer
+    ksxdr.dll.ksxdr_xdrClient_requestGetVar
+    ksxdr.dll.ksxdr_xdrClient_requestLink
+    ksxdr.dll.ksxdr_xdrClient_requestRegister
+    ksxdr.dll.ksxdr_xdrClient_requestRenameObject
+    ksxdr.dll.ksxdr_xdrClient_requestSetVar
+    ksxdr.dll.ksxdr_xdrClient_requestUnLink
+    ksxdr.dll.ksxdr_xdrClient_requestUnRegister
+    ksxdr.dll.ksxdr_xdrClient_reset
+    ksxdr.dll.ksxdr_xdrClient_shutdown
+    ksxdr.dll.ksxdr_xdrClient_startup
+    ksxdr.dll.ksxdr_xdrClient_typemethod
+    ksxdr.dll.ksxdr_xdrIdentificator_constructor
+    ksxdr.dll.ksxdr_xdrIdentificator_createClientHandler
+    ksxdr.dll.ksxdr_xdrIdentificator_identify
+    ksxdr.dll.ksxdr_xdrManagerCom_shutdown
+    ksxdr.dll.ksxdr_xdrManagerCom_startup
+    ksxdr.dll.ksxdr_xdrManagerCom_typemethod
+    ksxdr.dll.ksxdr_xdrSimpleTicketAuthenticator_TicketGetaccess
+    ksxdr.dll.ksxdr_xdrSimpleTicketAuthenticator_constructor
+    ksxdr.dll.ksxdr_xdrSimpleTicketAuthenticator_createticket
+    ksxdr.dll.ksxdr_xdrSimpleTicketAuthenticator_deleteticket
+    ksxdr.dll.ksxdr_xdrSimpleTicketAuthenticator_encodereply
+    ksxdr.dll.ksxdr_xdrSimpleTicketAuthenticator_shutdown
+    ksxdr.dll.ksxdr_xdrSimpleTicketAuthenticator_startup
+    ksxdr.dll.ov_library_open_ksxdr
+    ksxdr.dll.ov_library_open_ksxdr_old
+    ksxdr.dll.pclass_ksxdr_PMAskList
+    ksxdr.dll.pclass_ksxdr_xdrClient
+    ksxdr.dll.pclass_ksxdr_xdrClientHandler
+    ksxdr.dll.pclass_ksxdr_xdrClientHandlerExtension
+    ksxdr.dll.pclass_ksxdr_xdrIdentificator
+    ksxdr.dll.pclass_ksxdr_xdrManagerCom
+    ksxdr.dll.pclass_ksxdr_xdrSimpleTicketAuthenticator
+    ksxdrgethist.dll.ksxdrgethist_GetHistResult_constructor
+    ksxdrgethist.dll.ksxdrgethist_GetHistResult_destructor
+    ksxdrgethist.dll.ksxdrgethist_GetHistResult_getaccess
+    ksxdrgethist.dll.ksxdrgethist_GetHistResult_startup
+    ksxdrgethist.dll.ksxdrgethist_HistParam_getaccess
+    ksxdrgethist.dll.ksxdrgethist_HistParam_link
+    ksxdrgethist.dll.ksxdrgethist_HistParam_unlink
+    ksxdrgethist.dll.ksxdrgethist_KSApiCommon_prepareSubmit
+    ksxdrgethist.dll.ksxdrgethist_KSTTABS_constructor
+    ksxdrgethist.dll.ksxdrgethist_KSTTABS_destructor
+    ksxdrgethist.dll.ksxdrgethist_KSTTABS_startup
+    ksxdrgethist.dll.ksxdrgethist_KSTTREL_constructor
+    ksxdrgethist.dll.ksxdrgethist_KSTTREL_destructor
+    ksxdrgethist.dll.ksxdrgethist_KSTTREL_startup
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistItem_constructor
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistItem_destructor
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistItem_getaccess
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistItem_startup
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistPerHistResult_constructor
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistPerHistResult_destructor
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistPerHistResult_getaccess
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistPerHistResult_startup
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistResultItem_constructor
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistResultItem_destructor
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistResultItem_getaccess
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistResultItem_startup
+    ksxdrgethist.dll.ksxdrgethist_KsGetHistResultItem_value_get
+    ksxdrgethist.dll.ksxdrgethist_KsStringHistSelector_constructor
+    ksxdrgethist.dll.ksxdrgethist_KsStringHistSelector_destructor
+    ksxdrgethist.dll.ksxdrgethist_KsStringHistSelector_startup
+    ksxdrgethist.dll.ksxdrgethist_KsTimeHistSelector_constructor
+    ksxdrgethist.dll.ksxdrgethist_KsTimeHistSelector_destructor
+    ksxdrgethist.dll.ksxdrgethist_KsTimeHistSelector_startup
+    ksxdrgethist.dll.ksxdrgethist_getHistParams_constructor
+    ksxdrgethist.dll.ksxdrgethist_getHistParams_destructor
+    ksxdrgethist.dll.ksxdrgethist_getHistParams_getaccess
+    ksxdrgethist.dll.ksxdrgethist_getHistParams_startup
+    ksxdrgethist.dll.ksxdrgethist_getHist_constructor
+    ksxdrgethist.dll.ksxdrgethist_getHist_destructor
+    ksxdrgethist.dll.ksxdrgethist_getHist_setandsubmit
+    ksxdrgethist.dll.ksxdrgethist_getHist_shutdown
+    ksxdrgethist.dll.ksxdrgethist_getHist_startup
+    ksxdrgethist.dll.ksxdrgethist_getHist_submit
+    ksxdrgethist.dll.ksxdrgethist_operationGetHist_getaccess
+    ksxdrgethist.dll.ksxdrgethist_operationGetHist_link
+    ksxdrgethist.dll.ksxdrgethist_operationGetHist_unlink
+    ksxdrgethist.dll.ksxdrgethist_xdrGetHistClient_processGetHist
+    ksxdrgethist.dll.ksxdrgethist_xdrGetHistClient_requestGetHist
+    ksxdrgethist.dll.ov_library_open_ksxdrgethist
+    ksxdrgethist.dll.passoc_ksxdrgethist_HistParam
+    ksxdrgethist.dll.passoc_ksxdrgethist_operationGetHist
+    ksxdrgethist.dll.pclass_ksxdrgethist_GetHistResult
+    ksxdrgethist.dll.pclass_ksxdrgethist_KSTTABS
+    ksxdrgethist.dll.pclass_ksxdrgethist_KSTTREL
+    ksxdrgethist.dll.pclass_ksxdrgethist_KsGetHistItem
+    ksxdrgethist.dll.pclass_ksxdrgethist_KsGetHistPerHistResult
+    ksxdrgethist.dll.pclass_ksxdrgethist_KsGetHistResultItem
+    ksxdrgethist.dll.pclass_ksxdrgethist_KsStringHistSelector
+    ksxdrgethist.dll.pclass_ksxdrgethist_KsTimeHistSelector
+    ksxdrgethist.dll.pclass_ksxdrgethist_getHist
+    ksxdrgethist.dll.pclass_ksxdrgethist_getHistParams
+    ksxdrgethist.dll.pclass_ksxdrgethist_xdrGetHistClient

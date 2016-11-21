@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CAEXFile
+		FileName="BaseLibrary.xml"
+		SchemaVersion="2.15"
+		xsi:noNamespaceSchemaLocation="./CAEX_ClassModel_V2.15.xsd"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!--InterfaceLibrary-->
+	<InterfaceClassLib Name ="SoS_BaseInterfaceLibrary">
+		<InterfaceClass Name="sosxInterface">
+		</InterfaceClass>
+		<InterfaceClass Name="PortOutsideOutput" RefBaseClassPath="SoS_BaseInterfaceLibrary/sosxInterface">
+		</InterfaceClass>
+		<InterfaceClass Name="PortOutsideInput" RefBaseClassPath="SoS_BaseInterfaceLibrary/sosxInterface">
+		</InterfaceClass>
+		<InterfaceClass Name="PortInsideOutput" RefBaseClassPath="SoS_BaseInterfaceLibrary/sosxInterface">
+		</InterfaceClass>
+		<InterfaceClass Name="PortInsideInput" RefBaseClassPath="SoS_BaseInterfaceLibrary/sosxInterface">
+		</InterfaceClass>
+		<InterfaceClass Name="SourceInterface" RefBaseClassPath="SoS_BaseInterfaceLibrary/sosxInterface">
+		</InterfaceClass>
+		<InterfaceClass Name="SinkInterface" RefBaseClassPath="SoS_BaseInterfaceLibrary/sosxInterface">
+		</InterfaceClass>
+		<InterfaceClass Name="DNInputInterface" RefBaseClassPath="SoS_BaseInterfaceLibrary/sosxInterface">
+		</InterfaceClass>
+		<InterfaceClass Name="DNOutputInterface" RefBaseClassPath="SoS_BaseInterfaceLibrary/sosxInterface">
+		</InterfaceClass>
+		<InterfaceClass Name="StreamInterfaceA" RefBaseClassPath="SoS_BaseInterfaceLibrary/sosxInterface">
+		</InterfaceClass>
+		<InterfaceClass Name="StreamInterfaceB" RefBaseClassPath="SoS_BaseInterfaceLibrary/sosxInterface">
+		</InterfaceClass>
+	</InterfaceClassLib>
+
+	<!--RoleClassLibrary-->
+	<RoleClassLib Name="SoS_BaseRoleLibrary">
+		<!--BaseRole-->
+		<RoleClass Name="sosxBaseRole">
+			<Attribute Name="validFrom" AttributeDataType="xs:string" Unit="-">
+				<Description> Expected format: YYYY/MM/DD, YYYY/MM/DD hh:mm:ss or YYYY/MM/DD hh:mm:ss.uuuuuu</Description>
+			</Attribute>
+			<Attribute Name="validUntil" AttributeDataType="xs:string" Unit="-">
+				<Description> Expected format: YYYY/MM/DD, YYYY/MM/DD hh:mm:ss or YYYY/MM/DD hh:mm:ss.uuuuuu</Description>
+			</Attribute>
+		</RoleClass>
+		<!--Stream-->
+		<RoleClass Name ="Stream" RefBaseClassPath="SoS_BaseRoleLibrary/sosxBaseRole">
+			<ExternalInterface Name="SideA" RefBaseClassPath="SoS_BaseInterfaceLibrary/StreamInterfaceA"> </ExternalInterface>
+			<ExternalInterface Name="SideB" RefBaseClassPath="SoS_BaseInterfaceLibrary/StreamInterfaceB"> </ExternalInterface>
+		</RoleClass>
+		<!--PropertyInformation-->
+		<RoleClass Name="PropertyInformation" RefBaseClassPath="SoS_BaseRoleLibrary/sosxBaseRole">
+			<Attribute Name="type" AttributeDataType="xs:string" Unit="-"></Attribute>
+			<Attribute Name="source" AttributeDataType="xs:string" Unit="-"></Attribute>
+			<Attribute Name="value" AttributeDataType="xs:string" Unit="-"></Attribute>
+			<Attribute Name="unit" AttributeDataType="xs:string" Unit="-"></Attribute>
+		</RoleClass>
+	</RoleClassLib>
+
+
+	<!--SystemUnitLibrary-->
+	<SystemUnitClassLib Name="SoS_BaseSystemUnitLibrary">
+		<!--BaseSystemUnit-->
+		<SystemUnitClass Name="sosxBaseSystemUnit">
+			<Attribute Name="validFrom" AttributeDataType="xs:string" Unit="-">
+				<Description> Expected format: YYYY/MM/DD, YYYY/MM/DD hh:mm:ss or YYYY/MM/DD hh:mm:ss.uuuuuu</Description>
+			</Attribute>
+			<Attribute Name="validUntil" AttributeDataType="xs:string" Unit="-">
+				<Description> Expected format: YYYY/MM/DD, YYYY/MM/DD hh:mm:ss or YYYY/MM/DD hh:mm:ss.uuuuuu</Description>
+			</Attribute>
+		</SystemUnitClass>
+		<!--DetailedSystemUnit-->
+		<SystemUnitClass Name="sosxDetailedSystemUnit" RefBaseClassPath="SoS_BaseSystemUnitLibrary/sosxBaseSystemUnit">
+			<Attribute Name="name" AttributeDataType="xs:string" Unit="-"></Attribute>
+		</SystemUnitClass>
+		<!--Alternative-->
+		<SystemUnitClass Name="Alternative" RefBaseClassPath="SoS_BaseSystemUnitLibrary/sosxBaseSystemUnit">
+			<Attribute Name="name" AttributeDataType="xs:string" Unit="-"></Attribute>
+		</SystemUnitClass>
+		<!--System-->
+		<SystemUnitClass Name="System" RefBaseClassPath="SoS_BaseSystemUnitLibrary/sosxDetailedSystemUnit">
+		</SystemUnitClass>
+		<!--Process-->
+		<SystemUnitClass Name="Process" RefBaseClassPath="SoS_BaseSystemUnitLibrary/sosxDetailedSystemUnit">
+			<Attribute Name="externalInfo" AttributeDataType="xs:string" Unit="-"></Attribute>
+		</SystemUnitClass>
+		<!--StreamHandler-->
+		<SystemUnitClass Name="StreamHandler" RefBaseClassPath="SoS_BaseSystemUnitLibrary/sosxDetailedSystemUnit">
+			<Attribute Name="WasConnectedTo" AttributeDataType="xs:string" Unit="-"></Attribute>
+			<Attribute Name="StreamType" AttributeDataType="xs:string" Unit="-"></Attribute>
+		</SystemUnitClass>
+		<!--SourceSink-->
+		<SystemUnitClass Name="SourceSink" RefBaseClassPath="SoS_BaseSystemUnitLibrary/StreamHandler">
+		</SystemUnitClass>
+		<!--DistributionNode-->
+		<SystemUnitClass Name="DistributionNode" RefBaseClassPath="SoS_BaseSystemUnitLibrary/SourceSink">
+			<ExternalInterface Name="Input" RefBaseClassPath="SoS_BaseInterfaceLibrary/DNInputInterface"></ExternalInterface>
+			<ExternalInterface Name="Output" RefBaseClassPath="SoS_BaseInterfaceLibrary/DNOutputInterface"></ExternalInterface>
+		</SystemUnitClass>
+		<!--Port-->
+		<SystemUnitClass Name="Port" RefBaseClassPath="SoS_BaseSystemUnitLibrary/StreamHandler">
+		</SystemUnitClass>
+		<!--Property-->
+		<SystemUnitClass Name="Property">
+			<Attribute Name="name" AttributeDataType="xs:string" Unit="-"></Attribute>
+		</SystemUnitClass>
+		<!--SoSContainer-->
+		<SystemUnitClass Name="SoSContainer">
+		</SystemUnitClass>
+	</SystemUnitClassLib>
+</CAEXFile>
